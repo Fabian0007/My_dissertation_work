@@ -720,7 +720,7 @@ NetLogo 5.3.1
       <value value="1000"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="energy-initial">
-      <value value="1000"/>
+      <value value="10"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="prueba">
       <value value="&quot;test0&quot;"/>
