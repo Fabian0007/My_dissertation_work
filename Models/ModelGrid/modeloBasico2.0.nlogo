@@ -730,31 +730,6 @@ NetLogo 5.3.1
       <value value="&quot;test4&quot;"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="experiment" repetitions="1" runMetricsEveryStep="true">
-    <setup>setup</setup>
-    <go>go</go>
-    <enumeratedValueSet variable="bibliography?">
-      <value value="false"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="energy-initial">
-      <value value="10"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="colaboration?">
-      <value value="false"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="energy-aditional">
-      <value value="0"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="Universities">
-      <value value="2000"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="acumulation-multiple?">
-      <value value="false"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="growth-rate-papers">
-      <value value="0.01"/>
-    </enumeratedValueSet>
-  </experiment>
 </experiments>
 @#$#@#$#@
 @#$#@#$#@
