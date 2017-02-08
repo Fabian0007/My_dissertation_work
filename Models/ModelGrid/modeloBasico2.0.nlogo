@@ -728,6 +728,11 @@ NetLogo 5.3.1
       <value value="&quot;test2&quot;"/>
       <value value="&quot;test3&quot;"/>
       <value value="&quot;test4&quot;"/>
+      <value value="&quot;test5&quot;"/>
+      <value value="&quot;test6&quot;"/>
+      <value value="&quot;test7&quot;"/>
+      <value value="&quot;test8&quot;"/>
+      <value value="&quot;test9&quot;"/>
     </enumeratedValueSet>
   </experiment>
 </experiments>
