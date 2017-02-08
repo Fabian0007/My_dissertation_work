@@ -8,7 +8,7 @@ turtles-own [
 patches-own [papers bibliography]
 
 to setup-att-file ;turtle proc
-    set att-file (word universities energy-initial growth-rate-papers "turtles.csv")
+    set att-file (word universities energy-initial "turtles.csv")
     carefully [file-delete att-file] []
 end
 
@@ -21,13 +21,13 @@ to-report get-att-vals-curve ;turtle proc
 end
 
 to export ;turtle proc
-  file-open (word universities "-" energy-initial "-" growth-rate-papers "-" "turtles.csv")
+  file-open (word prueba "/" "test-" "turtles.csv")
   ask turtles [
     file-print csv:to-row get-att-vals
   ]
   file-close
 
-  export-all-plots (word universities "-" energy-initial "-" growth-rate-papers "-" "curve.csv")
+  export-all-plots (word prueba "/" "test-" "curve.csv")
 end
 
 
@@ -55,7 +55,7 @@ end
 
 
 to go
-  if total-energy = 0 or ticks > 2500[export stop ] ;;
+  if total-energy = 0 or ticks > 2000[export stop ] ;;
   grow-papers
   move-turtles
   energize
@@ -106,28 +106,28 @@ end
 to grow-papers
 ask patches [
   if pxcor <= 500 and pycor <= 500[
-    if random 100 < 0.01 and papers = 0[
+    if random 100 < 0.001 and papers = 0[
 
       set papers papers + 1
       set total-papers total-papers + 1
     ]
   ]
   if pxcor < 500 and pycor > 500[
-     if random 100 < 0.1 and papers = 0[
+     if random 100 < 0.01 and papers = 0[
 
       set papers papers + 1
       set total-papers total-papers + 1
     ]
   ]
   if pxcor > 500 and pycor < 500[
-     if random 100 < 1 and papers = 0[
+     if random 100 < 0.1 and papers = 0[
 
       set papers papers + 1
       set total-papers total-papers + 1
     ]
   ]
   if pxcor >= 500 and pycor >= 500[
-     if random 100 < 10 and papers = 0[
+     if random 100 < 1 and papers = 0[
       set papers papers + 1
       set total-papers total-papers + 1
     ]
@@ -279,23 +279,8 @@ energy-initial
 energy-initial
 0
 1000
-10
+11
 1
-1
-NIL
-HORIZONTAL
-
-SLIDER
--3
-201
-169
-234
-growth-rate-papers
-growth-rate-papers
-0
-100
-0.01
-0.01
 1
 NIL
 HORIZONTAL
@@ -727,24 +712,22 @@ NetLogo 5.3.1
 @#$#@#$#@
 @#$#@#$#@
 <experiments>
-  <experiment name="experiment" repetitions="1" runMetricsEveryStep="true">
+  <experiment name="prueba" repetitions="1" runMetricsEveryStep="true">
     <setup>setup</setup>
     <go>go</go>
-    <timeLimit steps="3500"/>
+    <timeLimit steps="2500"/>
     <enumeratedValueSet variable="Universities">
-      <value value="10"/>
-      <value value="100"/>
       <value value="1000"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="energy-initial">
-      <value value="10"/>
-      <value value="100"/>
       <value value="1000"/>
     </enumeratedValueSet>
-    <enumeratedValueSet variable="growth-rate-papers">
-      <value value="0.01"/>
-      <value value="1"/>
-      <value value="10"/>
+    <enumeratedValueSet variable="prueba">
+      <value value="&quot;test0&quot;"/>
+      <value value="&quot;test1&quot;"/>
+      <value value="&quot;test2&quot;"/>
+      <value value="&quot;test3&quot;"/>
+      <value value="&quot;test4&quot;"/>
     </enumeratedValueSet>
   </experiment>
   <experiment name="experiment" repetitions="1" runMetricsEveryStep="true">
