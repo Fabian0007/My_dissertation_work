@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6750,        159]
-NotebookOptionsPosition[      6515,        146]
-NotebookOutlinePosition[      6851,        161]
-CellTagsIndexPosition[      6808,        158]
+NotebookDataLength[      6825,        160]
+NotebookOptionsPosition[      6591,        147]
+NotebookOutlinePosition[      6926,        162]
+CellTagsIndexPosition[      6883,        159]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -37,7 +37,7 @@ Cell[BoxData[
          "x", "<>", "\"\</testTables/publicationstest-curve.csv\>\""}], 
          "]"}]}], ";", "\[IndentingNewLine]", 
        RowBox[{"plotPublicationsCurve", "=", 
-        RowBox[{"ListPlot", "[", 
+        RowBox[{"ListLogLogPlot", "[", 
          RowBox[{
           RowBox[{"{", "dataPublicationsCurve", "}"}], ",", 
           RowBox[{"ImageSize", "\[Rule]", "800"}], ",", 
@@ -123,8 +123,8 @@ Cell[BoxData[
      "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
-    "f", "[", "\"\</home/fabianact/Tesis/Pruebas/ModelGrid2\>\"", "]"}], 
-    ";"}], "\[IndentingNewLine]", "\n"}]}]], "Input",
+    "f", "[", "\"\</home/fabianact/Tesis/Pruebas/ModelGrid\>\"", "]"}], ";"}],
+    "\[IndentingNewLine]", "\n"}]}]], "Input",
  CellChangeTimes->{
   3.6955544934540253`*^9, {3.6955545283869743`*^9, 3.695554536162195*^9}, {
    3.695554573748786*^9, 3.695554580793789*^9}, {3.695554616058056*^9, 
@@ -142,10 +142,11 @@ Cell[BoxData[
    3.695560127477963*^9, 3.695560155636742*^9}, {3.695560253679019*^9, 
    3.695560256893189*^9}, {3.695560529775341*^9, 3.695560531948543*^9}, {
    3.695560606254508*^9, 3.695560649715865*^9}, 3.695560842293745*^9, {
-   3.6955836342052402`*^9, 3.6955836519050903`*^9}, 3.6955837293520613`*^9}]
+   3.6955836342052402`*^9, 3.6955836519050903`*^9}, 3.6955837293520613`*^9, {
+   3.695678377671693*^9, 3.695678399517415*^9}, 3.695678598549515*^9}]
 },
 WindowSize->{1678, 998},
-WindowMargins->{{44, Automatic}, {Automatic, 183}},
+WindowMargins->{{-9, Automatic}, {Automatic, -8}},
 FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 29, 2015)",
 StyleDefinitions->"Default.nb"
 ]
@@ -160,7 +161,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 5953, 124, 572, "Input"]
+Cell[558, 20, 6029, 125, 539, "Input"]
 }
 ]
 *)
