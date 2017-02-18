@@ -168,15 +168,17 @@ def getAverageOfTablesOld():
 	directory = raw_input()
 	print "How many test?"
 	numberTest = int(raw_input())
-	growth_rate_papers= ["0.01","1","10"]
-	universities=["10","100","1000"]
-	energy_initial=["10","100","1000"]
+	movement= ["1","100"]
+	initialEnergy=["5","10","15"]
+	probability1=["0.01", "0.1", "1"]
+	probability2=["0.01", "0.1", "1"]
 	file=""
-	for i in universities:
-		for j in energy_initial:
-			for l in growth_rate_papers:
-				file=i+"-"+j+"-"+l+"-curve.csv"
-				getAverage(directory, numberTest, file)
+	for i in initialEnergy:
+		for j in movement:
+			for l in probability1:
+				for m in probability2:
+					file=i+"-"+j+"-"+l+"-"+m+"-curve.csv"
+					getAverage(directory,numberTest,file)
 
 
 
@@ -185,30 +187,34 @@ def separateTablesOld():
 	directory = raw_input()
 	print "How many test?"
 	numberTest = int(raw_input())
-	growth_rate_papers= ["0.01","1","10"]
-	universities=["10","100","1000"]
-	energy_initial=["10","100","1000"]
+	movement= ["1","100"]
+	initialEnergy=["5","10","15"]
+	probability1=["0.01", "0.1", "1"]
+	probability2=["0.01", "0.1", "1"]
 	file=""
-	for i in universities:
-		for j in energy_initial:
-			for l in growth_rate_papers:
-				file=i+"-"+j+"-"+l+"-curve.csv"
-				createTables(directory,numberTest,file)
+	for i in initialEnergy:
+		for j in movement:
+			for l in probability1:
+				for m in probability2:
+					file=i+"-"+j+"-"+l+"-"+m+"-curve.csv"
+					createTables(directory,numberTest,file)
 
 
 
 def calculatePublicationsOld():
 	print "What is the directory?"
-	directory = input()
-	growth_rate_papers= ["0.01","1","10"]
-	universities=["10","100","1000"]
-	energy_initial=["10","100","1000"]
+	directory = raw_input()
+	movement= ["1","100"]
+	initialEnergy=["5","10","15"]
+	probability1=["0.01", "0.1", "1"]
+	probability2=["0.01", "0.1", "1"]
 	file=""
-	for i in universities:
-		for j in energy_initial:
-			for l in growth_rate_papers:
-				file=i+"-"+j+"-"+l+"-curve.csv"
-				calculatePublicationsForTable(directory,file)
+	for i in initialEnergy:
+		for j in movement:
+			for l in probability1:
+				for m in probability2:
+					file=i+"-"+j+"-"+l+"-"+m+"-curve.csv"
+					calculatePublicationsForTable(directory,file)
 
 
 def calculatePublicationsForTable(directory, input):

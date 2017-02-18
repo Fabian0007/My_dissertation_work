@@ -1,0 +1,250 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9968,        241]
+NotebookOptionsPosition[      9539,        222]
+NotebookOutlinePosition[      9874,        237]
+CellTagsIndexPosition[      9831,        234]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"movement", "=", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "100"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"initialEnergy", "=", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "10", ",", "15"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"probability1", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.01", ",", "0.1", ",", "1"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"probability2", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.01", ",", "0.1", ",", "1"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f", "[", "x0_", "]"}], ":=", "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"x", "=", "x0"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"SetDirectory", "[", 
+        RowBox[{"x", "<>", "\"\</images\>\""}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"dataPublicationsCurve", " ", "=", " ", 
+           RowBox[{"Import", "[", 
+            RowBox[{
+             RowBox[{
+             "x", "<>", "\"\</testTables/publications\>\"", "<>", "i", "<>", 
+              "\"\<-\>\"", "<>", "j", " ", "<>", "\"\<-\>\"", " ", "<>", 
+              "k"}], 
+             RowBox[{
+             "\"\<-\>\"", " ", "<>", " ", "l", "<>", "\"\<-curve.csv\>\""}]}],
+             "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"plotPublicationsCurve", "=", 
+           RowBox[{"ListLogLogPlot", "[", 
+            RowBox[{
+             RowBox[{"{", "dataPublicationsCurve", "}"}], ",", 
+             RowBox[{"ImageSize", "\[Rule]", "800"}], ",", 
+             RowBox[{"AxesLabel", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Ticks\>\"", ",", "\"\<Publications\>\""}], 
+               "}"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Export", "[", 
+           RowBox[{
+            RowBox[{
+            "\"\<publications\>\"", "<>", "\"\<5-\>\"", "<>", "i", " ", "<>", 
+             "\"\<-0.1-0.1-curve.png\>\""}], ",", "plotPublicationsCurve"}], 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"dataEnergyCurve", " ", "=", " ", 
+           RowBox[{"Import", "[", 
+            RowBox[{
+            "x", "<>", "\"\</testTables/energy5-1-0.1-0.1-curve.csv\>\""}], 
+            "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"plotEnergyCurve", "=", 
+           RowBox[{"ListPlot", "[", 
+            RowBox[{
+             RowBox[{"{", "dataEnergyCurve", "}"}], ",", 
+             RowBox[{"ImageSize", "\[Rule]", "800"}], ",", 
+             RowBox[{"AxesLabel", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Ticks\>\"", ",", "\"\<Energy\>\""}], "}"}]}]}], 
+            "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Export", "[", 
+           RowBox[{"\"\<energyCurve.png\>\"", ",", "plotEnergyCurve"}], "]"}],
+           ";", "\[IndentingNewLine]", 
+          RowBox[{"dataAgentsEnergyCurve", " ", "=", " ", 
+           RowBox[{"Import", "[", 
+            RowBox[{
+            "x", "<>", 
+             "\"\</testTables/agentsEnergy5-1-0.1-0.1-curve.csv\>\""}], 
+            "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"plotAgentsEnergyCurve", "=", 
+           RowBox[{"ListPlot", "[", 
+            RowBox[{
+             RowBox[{"{", "dataAgentsEnergyCurve", "}"}], ",", 
+             RowBox[{"ImageSize", "\[Rule]", "800"}], ",", 
+             RowBox[{"AxesLabel", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Ticks\>\"", ",", "\"\<Agents\>\""}], "}"}]}]}], 
+            "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Export", "[", 
+           RowBox[{
+           "\"\<agentsEnergyCurve.png\>\"", ",", "plotAgentsEnergyCurve"}], 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"dataPublicationsByTickCurve", " ", "=", " ", 
+           RowBox[{"Import", "[", 
+            RowBox[{
+            "x", "<>", 
+             "\"\</testTables/publicationsByTick5-1-0.1-0.1-curve.csv\>\""}], 
+            "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"plotPublicationsByTickCurve", "=", 
+           RowBox[{"ListPlot", "[", 
+            RowBox[{
+             RowBox[{"{", "dataPublicationsByTickCurve", "}"}], ",", 
+             RowBox[{"ImageSize", "\[Rule]", "800"}], ",", 
+             RowBox[{"AxesLabel", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Ticks\>\"", ",", "\"\<Publications by tick\>\""}],
+                "}"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Export", "[", 
+           RowBox[{
+           "\"\<publicationsByTickCurve.png\>\"", ",", 
+            "plotPublicationsByTickCurve"}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"dataEnergyPublicationsCurve", " ", "=", " ", 
+           RowBox[{"Import", "[", 
+            RowBox[{
+            "x", "<>", 
+             "\"\</testTables/energy-publications/test-curve.csv\>\""}], 
+            "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"plotEnergyPublicationsCurve", "=", 
+           RowBox[{"ListPlot", "[", 
+            RowBox[{
+             RowBox[{"{", "dataEnergyPublicationsCurve", "}"}], ",", 
+             RowBox[{"ImageSize", "\[Rule]", "800"}], ",", 
+             RowBox[{"AxesLabel", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"\"\<Energy\>\"", ",", "\"\<Publications\>\""}], 
+               "}"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Export", "[", 
+           RowBox[{
+           "\"\<energy-publicationsCurve.png\>\"", ",", 
+            "plotEnergyPublicationsCurve"}], "]"}], ";"}], 
+         "\[IndentingNewLine]", ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "movement"}], "}"}]}], "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f", "[", "\"\</home/fabianact/Tesis/Pruebas/Model\>\"", "]"}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.696369349099921*^9, 3.696369351500173*^9}, {
+   3.696369414571138*^9, 3.696369415123199*^9}, {3.69636944906069*^9, 
+   3.696369467916003*^9}, {3.696369518718348*^9, 3.6963695263331127`*^9}, {
+   3.696369882085663*^9, 3.696369886531363*^9}, 3.696369931453734*^9, {
+   3.696370193877516*^9, 3.696370212919281*^9}, {3.6963702436872873`*^9, 
+   3.696370251045643*^9}, {3.696370292238776*^9, 3.696370294646315*^9}, {
+   3.696370889198677*^9, 3.696370991366049*^9}, {3.696371031592379*^9, 
+   3.6963710898951883`*^9}, {3.696371131190606*^9, 3.696371157085678*^9}, {
+   3.696371196441421*^9, 3.696371200006021*^9}, {3.696371303679193*^9, 
+   3.696371351525859*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Import", "::", "chtype"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"First argument \[NoBreak]\\!\\(\\\"5-1-0.1-0.1-curve.csv\\\
+\"\\\\ \\\"/home/fabianact/Tesis/Pruebas/Model/testTables/publications\\\"\\)\
+\[NoBreak] is not a valid file, directory, or URL specification. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Import/chtype\\\", \
+ButtonNote -> \\\"Import::chtype\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.696371000393964*^9, 3.696371096152367*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Import", "::", "nffil"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"File not found during \[NoBreak]\\!\\(Import\\)\[NoBreak]. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Import/nffil\\\", \
+ButtonNote -> \\\"Import::nffil\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.696371000393964*^9, 3.6963710972380323`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Import", "::", "chtype"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"First argument \[NoBreak]\\!\\(\\\"5-1-0.1-0.1-curve.csv\\\
+\"\\\\ \\\"/home/fabianact/Tesis/Pruebas/Model/testTables/publications\\\"\\)\
+\[NoBreak] is not a valid file, directory, or URL specification. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Import/chtype\\\", \
+ButtonNote -> \\\"Import::chtype\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.696371000393964*^9, 3.696371097539126*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Import", "::", "nffil"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"File not found during \[NoBreak]\\!\\(Import\\)\[NoBreak]. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Import/nffil\\\", \
+ButtonNote -> \\\"Import::nffil\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.696371000393964*^9, 3.696371098578766*^9}]
+}, Open  ]]
+},
+WindowSize->{1678, 998},
+WindowMargins->{{-9, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 29, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 6793, 149, 671, "Input"],
+Cell[7376, 173, 608, 11, 23, "Message"],
+Cell[7987, 186, 462, 9, 23, "Message"],
+Cell[8452, 197, 608, 11, 23, "Message"],
+Cell[9063, 210, 460, 9, 23, "Message"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
