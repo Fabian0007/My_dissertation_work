@@ -1,5 +1,15 @@
 import os
 import errno
+import pandas as pd
+import sys
+
+
+def sorted(directory,numberTest, input):
+	for i in range(0,numberTest):
+		df = pd.read_csv(directory+'/test'+str(i)+'/'+input, delimiter=",",header=None)
+		df.columns = ['id', 'pub', 'en']
+		df_sort=df.sort_values(by='pub', axis=0,ascending=False)
+		df_sort.to_csv(directory+'/test'+str(i)+'/testTables/'+'test'+input, sep=',', index=False, header=None)
 
 def createTables(directory,numberTest, input):
 
@@ -145,6 +155,23 @@ def createJoin(directory, table1,table2, input):
 	tab1.close()
 	tab2.close()
 
+def sortedTables():
+	print "What is the directory?"
+	directory = raw_input()
+	print "How many test?"
+	numberTest = int(raw_input())
+	movement= ["1","100"]
+	initialEnergy=["5","10","15"]
+	probability1=["0.01", "0.1", "1"]
+	probability2=["0.01", "0.1", "1"]
+	file=""
+	for i in initialEnergy:
+		for j in movement:
+			for l in probability1:
+				for m in probability2:
+					file=i+"-"+j+"-"+l+"-"+m+"-turtles.csv"
+					sorted(directory,numberTest,file)
+
 
 def joinTablesOld():
 	print "What is the directory?"
@@ -273,15 +300,82 @@ def allOnOne():
 	calculatePublicationsForTable(directory,file)
 	createJoin(directory,"energy", "publications", file)
 
+def getAverageTurtles(directory, numberTest, input):
+	listOfNumbers=[]
+	numberInformation=[]
+	try:
+		os.makedirs(directory+'/testTables')
+	except OSError as exception:
+		if exception.errno != errno.EEXIST:
+			raise
+	for i in range(0,1000):
+		listOfNumbers.append(0)
+		numberInformation.append(0)
+	
+	for i in range(0,numberTest):
+		pub = open(directory+'/test'+str(i)+'/testTables/'+'test'+input, 'r')    	    	    
+		numberLine=0
+		for line in pub:
+			line = line.replace("\n", '')
+			listOfNumbers[numberLine]=listOfNumbers[numberLine]+int(line.split(',')[1])
+			numberInformation[numberLine]=numberInformation[numberLine]+1
+			numberLine=numberLine+1
+		pub.close()
+
+	for i in range(0, len(listOfNumbers)):
+		listOfNumbers[i]=(listOfNumbers[i]/numberInformation[i])
+
+	values = []
+	repitition = []
+	j = 0
+	isIn = False
+	for number in listOfNumbers:
+		if number not in values and number != 0:
+			values.append(number)
+			repitition.append(listOfNumbers.count(number))
+
+	pub = open(directory+'/testTables/'+input, 'w') 
+
+	for i in range(0, len(values)):
+		pub.write(str(values[i])+','+str(repitition[i])+'\n')
+	pub.close()
+
+
+def getAverageOfTurtles():
+	print "What is the directory?"
+	directory = raw_input()
+	print "How many test?"
+	numberTest = int(raw_input())
+	movement= ["1","100"]
+	initialEnergy=["5","10","15"]
+	probability1=["0.01", "0.1", "1"]
+	probability2=["0.01", "0.1", "1"]
+	file=""
+	for i in initialEnergy:
+		for j in movement:
+			for l in probability1:
+				for m in probability2:
+					file=i+"-"+j+"-"+l+"-"+m+"-turtles.csv"
+					sorted(directory,numberTest,file)
+	for i in initialEnergy:
+		for j in movement:
+			for l in probability1:
+				for m in probability2:
+					file=i+"-"+j+"-"+l+"-"+m+"-turtles.csv"
+					getAverageTurtles(directory,numberTest,file)
+
+
+
 def menu():
 	print "0. All on one"
 	print "1. Separate into tables (old version)"
 	print "2. Get average of tables (old version)"
 	print "3. Calculate publications (old version)"
 	print "4. Join tables (old version)"
+	print "5. Get average agents productivity"
 
 	argument=input()
-	switcher = {0: allOnOne, 1: separateTablesOld,2: getAverageOfTablesOld, 3: calculatePublicationsOld, 4: joinTablesOld}
+	switcher = {0: allOnOne, 1: separateTablesOld,2: getAverageOfTablesOld, 3: calculatePublicationsOld, 4: joinTablesOld, 5: getAverageOfTurtles}
 	func = switcher.get(argument, lambda: "nothing")
 	return func()
 

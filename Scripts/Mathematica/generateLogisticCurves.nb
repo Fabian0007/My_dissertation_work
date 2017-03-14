@@ -10,81 +10,80 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19420,        393]
-NotebookOptionsPosition[     18983,        374]
-NotebookOutlinePosition[     19318,        389]
-CellTagsIndexPosition[     19275,        386]
+NotebookDataLength[     19086,        389]
+NotebookOptionsPosition[     18649,        370]
+NotebookOutlinePosition[     18984,        385]
+CellTagsIndexPosition[     18941,        382]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell[BoxData[
- RowBox[{"\[IndentingNewLine]", 
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"movement", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<1\>\"", ",", "\"\<100\>\""}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"initialEnergy", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<5\>\"", ",", "\"\<10\>\"", ",", "\"\<15\>\""}], "}"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"probability1", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<0.01\>\"", ",", "\"\<0.1\>\"", ",", "\"\<1\>\""}], "}"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"probability2", "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<0.01\>\"", ",", "\"\<0.1\>\"", ",", "\"\<1\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
-   RowBox[{
-    RowBox[{"movement", "=", 
+   RowBox[{"f", "[", "y0_", "]"}], ":=", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
      RowBox[{"{", 
-      RowBox[{"\"\<1\>\"", ",", "\"\<100\>\""}], "}"}]}], ";"}], "\n", 
-   RowBox[{
-    RowBox[{"initialEnergy", "=", 
-     RowBox[{"{", 
-      RowBox[{"\"\<5\>\"", ",", "\"\<10\>\"", ",", "\"\<15\>\""}], "}"}]}], 
-    ";"}], "\n", 
-   RowBox[{
-    RowBox[{"probability1", "=", 
-     RowBox[{"{", 
-      RowBox[{"\"\<0.01\>\"", ",", "\"\<0.1\>\"", ",", "\"\<1\>\""}], "}"}]}],
-     ";"}], "\n", 
-   RowBox[{
-    RowBox[{"probability2", "=", 
-     RowBox[{"{", 
-      RowBox[{"\"\<0.01\>\"", ",", "\"\<0.1\>\"", ",", "\"\<1\>\""}], "}"}]}],
-     ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"f", "[", "y0_", "]"}], ":=", "\[IndentingNewLine]", 
-    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+      RowBox[{"y", "=", "y0"}], "}"}], ",", "\[IndentingNewLine]", 
      RowBox[{
-      RowBox[{"{", 
-       RowBox[{"y", "=", "y0"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"SetDirectory", "[", 
+       RowBox[{"y", "<>", "\"\</images\>\""}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"listR2", " ", "=", " ", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{
-       RowBox[{"SetDirectory", "[", 
-        RowBox[{"y", "<>", "\"\</images\>\""}], "]"}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{"listR2", " ", "=", " ", 
-        RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{
-        RowBox[{"Do", "[", "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"Do", "[", "\[IndentingNewLine]", 
-           RowBox[{
-            RowBox[{"Do", "[", "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Do", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Do", "[", "\[IndentingNewLine]", 
+            RowBox[{
              RowBox[{
-              RowBox[{
-               RowBox[{"Do", "[", "\[IndentingNewLine]", 
+              RowBox[{"Do", "[", "\[IndentingNewLine]", 
+               RowBox[{
                 RowBox[{
-                 RowBox[{
-                  RowBox[{"dataPublicationsCurve", " ", "=", " ", 
-                   RowBox[{"Import", "[", 
-                    RowBox[{
-                    "y", "<>", "\"\</testTables/publications\>\"", "<>", "i", 
+                 RowBox[{"dataPublicationsCurve", " ", "=", " ", 
+                  RowBox[{"Import", "[", 
+                   RowBox[{
+                   "y", "<>", "\"\</testTables/publications\>\"", "<>", "i", 
                     "<>", "\"\<-\>\"", "<>", "j", " ", "<>", "\"\<-\>\"", " ",
                      "<>", "k", " ", "<>", "\"\<-\>\"", " ", "<>", " ", "l", 
                     "<>", "\"\<-curve.csv\>\""}], "]"}]}], ";", 
-                  "\[IndentingNewLine]", 
-                  RowBox[{"plotPublicationsCurve", "=", 
-                   RowBox[{"ListPlot", "[", 
-                    RowBox[{
+                 "\[IndentingNewLine]", 
+                 RowBox[{"plotPublicationsCurve", "=", 
+                  RowBox[{"ListPlot", "[", 
+                   RowBox[{
                     RowBox[{"{", "dataPublicationsCurve", "}"}], ",", 
                     RowBox[{"ImageSize", "\[Rule]", "800"}], ",", 
                     RowBox[{"AxesLabel", "\[Rule]", 
                     RowBox[{"{", 
                     RowBox[{"\"\<Ticks\>\"", ",", "\"\<Publications\>\""}], 
                     "}"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
-                  RowBox[{"fitFkt", "=", 
-                   RowBox[{"NonlinearModelFit", "[", 
-                    RowBox[{"dataPublicationsCurve", ",", 
+                 RowBox[{"fitFkt", "=", 
+                  RowBox[{"NonlinearModelFit", "[", 
+                   RowBox[{"dataPublicationsCurve", ",", 
                     RowBox[{"c", "/", 
                     RowBox[{"(", 
                     RowBox[{"1", "+", 
@@ -94,13 +93,13 @@ Cell[BoxData[
                     RowBox[{"-", "b"}], " ", "x"}], "]"}]}]}], ")"}]}], ",", 
                     RowBox[{"{", 
                     RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "x"}], 
-                    "]"}]}], ";", "\n", "                 ", 
-                  RowBox[{"R2", "=", 
-                   RowBox[{"fitFkt", "[", "\"\<AdjustedRSquared\>\"", "]"}]}],
-                   ";", "\[IndentingNewLine]", 
-                  RowBox[{"listR2", "=", 
-                   RowBox[{"Append", "[", 
-                    RowBox[{"listR2", ",", " ", 
+                   "]"}]}], ";", "\n", "                 ", 
+                 RowBox[{"R2", "=", 
+                  RowBox[{"fitFkt", "[", "\"\<AdjustedRSquared\>\"", "]"}]}], 
+                 ";", "\[IndentingNewLine]", 
+                 RowBox[{"listR2", "=", 
+                  RowBox[{"Append", "[", 
+                   RowBox[{"listR2", ",", " ", 
                     RowBox[{"{", 
                     RowBox[{
                     RowBox[{
@@ -111,12 +110,10 @@ Cell[BoxData[
                     ",", " ", 
                     RowBox[{"Last", "[", 
                     RowBox[{"Last", "[", "dataPublicationsCurve", "]"}], 
-                    "]"}]}], "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
-                 RowBox[{"(*", 
-                  RowBox[{
-                   RowBox[{"plotPublicationsCurve", "=", 
-                    RowBox[{"Show", "[", 
-                    RowBox[{
+                    "]"}]}], "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"plotPublicationsCurve", "=", 
+                  RowBox[{"Show", "[", 
+                   RowBox[{
                     RowBox[{"ListPlot", "[", 
                     RowBox[{"dataPublicationsCurve", ",", 
                     RowBox[{"ImageSize", "\[Rule]", "800"}], ",", 
@@ -134,77 +131,75 @@ Cell[BoxData[
                     RowBox[{"x", ",", "0", ",", 
                     RowBox[{"Length", "[", "dataPublicationsCurve", "]"}]}], 
                     "}"}]}], "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"Export", "[", 
-                    RowBox[{
-                    RowBox[{
-                    "\"\<publications\>\"", "<>", "i", "<>", "\"\<-\>\"", "<>",
+                 RowBox[{"Export", "[", 
+                  RowBox[{
+                   RowBox[{
+                   "\"\<publications\>\"", "<>", "i", "<>", "\"\<-\>\"", "<>",
                      "j", " ", "<>", "\"\<-\>\"", " ", "<>", "k", "<>", " ", 
                     "\"\<-\>\"", " ", "<>", " ", "l", "<>", 
                     "\"\<-curve.png\>\""}], ",", "plotPublicationsCurve"}], 
-                    "]"}], ";"}], "*)"}], "\[IndentingNewLine]", 
-                 RowBox[{"(*", 
-                  RowBox[{
-                   RowBox[{"dataEnergyCurve", " ", "=", " ", 
-                    RowBox[{"Import", "[", 
-                    RowBox[{
-                    "x", "<>", "\"\</testTables/energy\>\"", "<>", "i", "<>", 
+                  "]"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"DataEnergyCurve", " ", "=", " ", 
+                  RowBox[{"Import", "[", 
+                   RowBox[{
+                   "y", "<>", "\"\</testTables/energy\>\"", "<>", "i", "<>", 
                     "\"\<-\>\"", "<>", "j", " ", "<>", "\"\<-\>\"", " ", "<>",
                      "k", " ", "<>", " ", "\"\<-\>\"", " ", "<>", " ", "l", 
                     "<>", "\"\<-curve.csv\>\""}], "]"}]}], ";", 
-                   "\[IndentingNewLine]", 
-                   RowBox[{"plotEnergyCurve", "=", 
-                    RowBox[{"ListPlot", "[", 
-                    RowBox[{
+                 "\[IndentingNewLine]", 
+                 RowBox[{"plotEnergyCurve", "=", 
+                  RowBox[{"ListPlot", "[", 
+                   RowBox[{
                     RowBox[{"{", "dataEnergyCurve", "}"}], ",", 
                     RowBox[{"ImageSize", "\[Rule]", "800"}], ",", 
                     RowBox[{"AxesLabel", "\[Rule]", 
                     RowBox[{"{", 
                     RowBox[{"\"\<Ticks\>\"", ",", "\"\<Energy\>\""}], 
                     "}"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"Export", "[", 
-                    RowBox[{
-                    RowBox[{
-                    "\"\<energy\>\"", "<>", "i", "<>", "\"\<-\>\"", "<>", "j",
-                     " ", "<>", "\"\<-\>\"", " ", "<>", "k", "<>", " ", 
+                 RowBox[{"Export", "[", 
+                  RowBox[{
+                   RowBox[{
+                   "\"\<energy\>\"", "<>", "i", "<>", "\"\<-\>\"", "<>", "j", 
+                    " ", "<>", "\"\<-\>\"", " ", "<>", "k", "<>", " ", 
                     "\"\<-\>\"", " ", "<>", " ", "l", "<>", 
                     "\"\<-curve.png\>\""}], ",", "plotEnergyCurve"}], "]"}], 
-                   ";", "\[IndentingNewLine]", 
-                   RowBox[{"dataAgentsEnergyCurve", " ", "=", " ", 
-                    RowBox[{"Import", "[", 
-                    RowBox[{
-                    "x", "<>", "\"\</testTables/agentsEnergy\>\"", "<>", "i", 
+                 ";", "\[IndentingNewLine]", 
+                 RowBox[{"dataAgentsEnergyCurve", " ", "=", " ", 
+                  RowBox[{"Import", "[", 
+                   RowBox[{
+                   "y", "<>", "\"\</testTables/agentsEnergy\>\"", "<>", "i", 
                     "<>", "\"\<-\>\"", "<>", "j", " ", "<>", "\"\<-\>\"", " ",
                      "<>", "k", " ", "<>", " ", "\"\<-\>\"", " ", "<>", " ", 
                     "l", "<>", "\"\<-curve.csv\>\""}], "]"}]}], ";", 
-                   "\[IndentingNewLine]", 
-                   RowBox[{"plotAgentsEnergyCurve", "=", 
-                    RowBox[{"ListPlot", "[", 
-                    RowBox[{
+                 "\[IndentingNewLine]", 
+                 RowBox[{"plotAgentsEnergyCurve", "=", 
+                  RowBox[{"ListPlot", "[", 
+                   RowBox[{
                     RowBox[{"{", "dataAgentsEnergyCurve", "}"}], ",", 
                     RowBox[{"ImageSize", "\[Rule]", "800"}], ",", 
                     RowBox[{"AxesLabel", "\[Rule]", 
                     RowBox[{"{", 
                     RowBox[{"\"\<Ticks\>\"", ",", "\"\<Agents\>\""}], 
                     "}"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"Export", "[", 
-                    RowBox[{
-                    RowBox[{
-                    "\"\<agentsEnergy\>\"", "<>", "i", "<>", "\"\<-\>\"", "<>",
+                 RowBox[{"Export", "[", 
+                  RowBox[{
+                   RowBox[{
+                   "\"\<agentsEnergy\>\"", "<>", "i", "<>", "\"\<-\>\"", "<>",
                      "j", " ", "<>", "\"\<-\>\"", " ", "<>", "k", " ", "<>", 
                     " ", "\"\<-\>\"", " ", "<>", " ", "l", "<>", 
                     "\"\<-curve.png\>\""}], ",", "plotAgentsEnergyCurve"}], 
-                    "]"}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"dataPublicationsByTickCurve", " ", "=", " ", 
-                    RowBox[{"Import", "[", 
-                    RowBox[{
-                    "x", "<>", "\"\</testTables/publicationsByTick\>\"", "<>",
-                     "i", "<>", "\"\<-\>\"", "<>", "j", " ", "<>", 
-                    "\"\<-\>\"", " ", "<>", "k", " ", "<>", " ", "\"\<-\>\"", 
-                    " ", "<>", " ", "l", "<>", "\"\<-curve.csv\>\""}], 
-                    "]"}]}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"plotPublicationsByTickCurve", "=", 
-                    RowBox[{"ListPlot", "[", 
-                    RowBox[{
+                  "]"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"dataPublicationsByTickCurve", " ", "=", " ", 
+                  RowBox[{"Import", "[", 
+                   RowBox[{
+                   "y", "<>", "\"\</testTables/publicationsByTick\>\"", "<>", 
+                    "i", "<>", "\"\<-\>\"", "<>", "j", " ", "<>", "\"\<-\>\"",
+                     " ", "<>", "k", " ", "<>", " ", "\"\<-\>\"", " ", "<>", 
+                    " ", "l", "<>", "\"\<-curve.csv\>\""}], "]"}]}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"plotPublicationsByTickCurve", "=", 
+                  RowBox[{"ListPlot", "[", 
+                   RowBox[{
                     RowBox[{"{", "dataPublicationsByTickCurve", "}"}], ",", 
                     RowBox[{"ImageSize", "\[Rule]", "800"}], ",", 
                     RowBox[{"AxesLabel", "\[Rule]", 
@@ -212,59 +207,60 @@ Cell[BoxData[
                     RowBox[{
                     "\"\<Ticks\>\"", ",", "\"\<Publications by tick\>\""}], 
                     "}"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"Export", "[", 
-                    RowBox[{
-                    RowBox[{
-                    "\"\<publicationsByTick\>\"", "<>", "i", "<>", 
-                    "\"\<-\>\"", "<>", "j", " ", "<>", "\"\<-\>\"", " ", "<>",
-                     "k", " ", "<>", " ", "\"\<-\>\"", " ", "<>", " ", "l", 
-                    "<>", "\"\<energy-publications-curve.png\>\""}], ",", 
-                    "plotPublicationsByTickCurve"}], "]"}], ";", 
-                   "\[IndentingNewLine]", 
-                   RowBox[{"dataEnergyPublicationsCurve", " ", "=", " ", 
-                    RowBox[{"Import", "[", 
-                    RowBox[{
-                    "x", "<>", "\"\</testTables/energy-publications/\>\"", "<>",
+                 RowBox[{"Export", "[", 
+                  RowBox[{
+                   RowBox[{
+                   "\"\<publicationsByTick\>\"", "<>", "i", "<>", "\"\<-\>\"",
+                     "<>", "j", " ", "<>", "\"\<-\>\"", " ", "<>", "k", " ", "<>",
+                     " ", "\"\<-\>\"", " ", "<>", " ", "l", "<>", 
+                    "\"\<energy-publications-curve.png\>\""}], ",", 
+                   "plotPublicationsByTickCurve"}], "]"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"dataEnergyPublicationsCurve", " ", "=", " ", 
+                  RowBox[{"Import", "[", 
+                   RowBox[{
+                   "y", "<>", "\"\</testTables/energy-publications/\>\"", "<>",
                      "i", "<>", "\"\<-\>\"", "<>", "j", " ", "<>", 
                     "\"\<-\>\"", " ", "<>", "k", " ", "<>", " ", "\"\<-\>\"", 
                     " ", "<>", " ", "l", "<>", "\"\<-curve.csv\>\""}], 
-                    "]"}]}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"plotEnergyPublicationsCurve", "=", 
-                    RowBox[{"ListPlot", "[", 
-                    RowBox[{
+                   "]"}]}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"plotEnergyPublicationsCurve", "=", 
+                  RowBox[{"ListPlot", "[", 
+                   RowBox[{
                     RowBox[{"{", "dataEnergyPublicationsCurve", "}"}], ",", 
                     RowBox[{"ImageSize", "\[Rule]", "800"}], ",", 
                     RowBox[{"AxesLabel", "\[Rule]", 
                     RowBox[{"{", 
                     RowBox[{"\"\<Energy\>\"", ",", "\"\<Publications\>\""}], 
                     "}"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
-                   RowBox[{"Export", "[", 
-                    RowBox[{
-                    RowBox[{
-                    "i", "<>", "\"\<-\>\"", "<>", "j", " ", "<>", "\"\<-\>\"",
-                     " ", "<>", "k", " ", "<>", " ", "\"\<-\>\"", " ", "<>", 
+                 RowBox[{"Export", "[", 
+                  RowBox[{
+                   RowBox[{
+                   "i", "<>", "\"\<-\>\"", "<>", "j", " ", "<>", "\"\<-\>\"", 
+                    " ", "<>", "k", " ", "<>", " ", "\"\<-\>\"", " ", "<>", 
                     " ", "l", "<>", "\"\<-curve.png\>\""}], ",", 
-                    "plotEnergyPublicationsCurve"}], "]"}], ";"}], "*)"}], 
-                 "\[IndentingNewLine]", ",", " ", 
-                 RowBox[{"{", 
-                  RowBox[{"i", ",", "initialEnergy"}], "}"}]}], "]"}], ";"}], 
-              "\[IndentingNewLine]", ",", " ", 
-              RowBox[{"{", 
-               RowBox[{"j", ",", "movement"}], "}"}]}], "]"}], 
-            "\[IndentingNewLine]", ",", " ", 
-            RowBox[{"{", 
-             RowBox[{"k", ",", "probability1"}], "}"}]}], "]"}], " ", 
-          "\[IndentingNewLine]", ",", "  ", 
-          RowBox[{"{", 
-           RowBox[{"l", ",", "probability2"}], "}"}]}], "]"}], 
-        "\[IndentingNewLine]", 
-        RowBox[{"Export", "[", 
-         RowBox[{"\"\<listR2.csv\>\"", ",", "listR2", ",", "\"\<CSV\>\""}], 
-         "]"}]}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"f", "[", "\"\</home/fabianact/Tesis/Pruebas/Model\>\"", "]"}], 
-    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]"}]}]], "Input",
+                   "plotEnergyPublicationsCurve"}], "]"}], ";"}], 
+                "\[IndentingNewLine]", ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", "initialEnergy"}], "}"}]}], "]"}], ";"}], 
+             "\[IndentingNewLine]", ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", "movement"}], "}"}]}], "]"}], 
+           "\[IndentingNewLine]", ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"k", ",", "probability1"}], "}"}]}], "]"}], " ", 
+         "\[IndentingNewLine]", ",", "  ", 
+         RowBox[{"{", 
+          RowBox[{"l", ",", "probability2"}], "}"}]}], "]"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"Export", "[", 
+        RowBox[{"\"\<listR2.csv\>\"", ",", "listR2", ",", "\"\<CSV\>\""}], 
+        "]"}]}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "\"\</home/fabianact/Tesis/Pruebas/Model\>\"", "]"}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->{{3.696369349099921*^9, 3.696369351500173*^9}, {
    3.696369414571138*^9, 3.696369415123199*^9}, {3.69636944906069*^9, 
    3.696369467916003*^9}, {3.696369518718348*^9, 3.6963695263331127`*^9}, {
@@ -296,7 +292,7 @@ Cell[BoxData[
    3.696594276839384*^9}, {3.6965943232571707`*^9, 3.696594323675864*^9}, {
    3.696594365770067*^9, 3.696594378379258*^9}, {3.6965952480021067`*^9, 
    3.696595248415928*^9}, {3.696595292857361*^9, 3.696595320327813*^9}, {
-   3.696595407503887*^9, 3.696595501831976*^9}}],
+   3.696595407503887*^9, 3.696595501831976*^9}, 3.698497023734667*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -389,11 +385,11 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 14852, 276, 1058, "Input"],
-Cell[15435, 300, 873, 16, 23, "Message"],
-Cell[16311, 318, 873, 16, 23, "Message"],
-Cell[17187, 336, 873, 16, 23, "Message"],
-Cell[18063, 354, 904, 17, 23, "Message"]
+Cell[580, 22, 14518, 272, 1067, "Input"],
+Cell[15101, 296, 873, 16, 23, "Message"],
+Cell[15977, 314, 873, 16, 23, "Message"],
+Cell[16853, 332, 873, 16, 23, "Message"],
+Cell[17729, 350, 904, 17, 23, "Message"]
 }, Open  ]]
 }
 ]
