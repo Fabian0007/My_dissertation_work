@@ -1,0 +1,38 @@
+"export-plots data (NetLogo 5.2.1)"
+"Modelo.nlogo"
+"05/11/2017 11:01:36:248 -0500"
+
+"MODEL SETTINGS"
+"initial-probability-agents","probabilityincrease7","probabilityincrease5","numbergroupsuniversity1","numbergroupsuniversity5","probabilityincrease6","probabilityincrease2","probabilityincrease4","prueba","max-xcor-grid","numbergroupsuniversity7","max-ycor-grid","probabilityincrease1","numbergroupsuniversity8","probabilityincrease3","numbergroupsuniversity3","numbergroupsuniversity2","numbergroupsuniversity6","probabilityincrease8","universities","numbergroupsuniversity4"
+"1","0.1","0.1","100","50","0.1","0","0.1","""test0""","39","50","50","0","50","1.0E-4","1000","997","51","0.1","0","50"
+
+"""pubUniversity1"""
+"x min","x max","y min","y max","autoplot?","current pen","legend open?","number of pens"
+"0","10","0","10","true","""default""","false","1"
+
+"pen name","pen down?","mode","interval","color","x"
+"""default""","true","0","1","0","0"
+
+"""default"""
+"x","y","color","pen down?"
+
+"""pubUniversity2"""
+"x min","x max","y min","y max","autoplot?","current pen","legend open?","number of pens"
+"0","10","0","10","true","""default""","false","1"
+
+"pen name","pen down?","mode","interval","color","x"
+"""default""","true","0","1","0","0"
+
+"""default"""
+"x","y","color","pen down?"
+
+"""pubUniversity3"""
+"x min","x max","y min","y max","autoplot?","current pen","legend open?","number of pens"
+"0","10","0","10","true","""default""","false","1"
+
+"pen name","pen down?","mode","interval","color","x"
+"""default""","true","0","1","0","0"
+
+"""default"""
+"x","y","color","pen down?"
+
