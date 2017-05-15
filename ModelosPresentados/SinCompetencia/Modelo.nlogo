@@ -1,104 +1,96 @@
 extensions [csv array]
-globals[pubtotal   pubUniversities probUniversities probIncreaseUniversities]
+globals[pubtotal pubUniversities probUniversities probIncreaseUniversities]
 turtles-own [
   university
   pub
   ]
-
 
 to-report get-att
   report (list who pub university)
 end
 
 to export
-  file-open (word numberTest "/" initial-probability-agents "-" max-xcor-grid "-" max-ycor-grid "-turtles.csv")
+  file-open (word numberTest "/" initial-probability-agents "-turtles.csv")
   ask turtles [
     file-print csv:to-row get-att
   ]
   file-close
-  export-all-plots (word numberTest "/" initial-probability-agents "-" max-xcor-grid "-" max-ycor-grid "-curve.csv")
+  export-all-plots (word numberTest "/" initial-probability-agents "-curve.csv")
 end
 
-
 to setup
-resize-world 0 max-xcor-grid 0 max-ycor-grid
 clear-all
 setup-turtles
 reset-ticks
 end
 
-
-
 to setup-turtles
-create-turtles numberGroupsUniversity1 [
-  set university 0
-  setxy random-xcor random-ycor
+  ;; create groups for each university
+  create-turtles numberGroupsUniversity1 [
+    set university 0
+    setxy random-xcor random-ycor
   ]
-create-turtles numberGroupsUniversity2 [
-  set university 1
-  setxy random-xcor random-ycor
+  create-turtles numberGroupsUniversity2 [
+    set university 1
+    setxy random-xcor random-ycor
   ]
-create-turtles numberGroupsUniversity3 [
-  set university 2
-  setxy random-xcor random-ycor
+  create-turtles numberGroupsUniversity3 [
+    set university 2
+    setxy random-xcor random-ycor
   ]
-create-turtles numberGroupsUniversity4 [
-  set university 3
-  setxy random-xcor random-ycor
+  create-turtles numberGroupsUniversity4 [
+    set university 3
+    setxy random-xcor random-ycor
   ]
-create-turtles numberGroupsUniversity5 [
-  set university 4
-  setxy random-xcor random-ycor
+  create-turtles numberGroupsUniversity5 [
+    set university 4
+    setxy random-xcor random-ycor
   ]
-create-turtles numberGroupsUniversity6 [
-  set university 5
-  setxy random-xcor random-ycor
+  create-turtles numberGroupsUniversity6 [
+    set university 5
+    setxy random-xcor random-ycor
   ]
-create-turtles numberGroupsUniversity7 [
-  set university 6
-  setxy random-xcor random-ycor
+  create-turtles numberGroupsUniversity7 [
+    set university 6
+    setxy random-xcor random-ycor
   ]
-create-turtles numberGroupsUniversity8 [
-  set university 7
-  setxy random-xcor random-ycor
+  create-turtles numberGroupsUniversity8 [
+    set university 7
+    setxy random-xcor random-ycor
   ]
 
-set pubUniversities array:from-list n-values universities [0]
-
-set probUniversities array:from-list n-values universities [initial-probability-agents]
-
-set probIncreaseUniversities array:from-list n-values universities [0]
-
-array:set probIncreaseUniversities 0 probabilityIncrease1
-array:set probIncreaseUniversities 1 probabilityIncrease2
-array:set probIncreaseUniversities 2 probabilityIncrease3
-array:set probIncreaseUniversities 3 probabilityIncrease4
-array:set probIncreaseUniversities 4 probabilityIncrease5
-array:set probIncreaseUniversities 5 probabilityIncrease6
-array:set probIncreaseUniversities 6 probabilityIncrease7
-array:set probIncreaseUniversities 7 probabilityIncrease8
-
+  ;; create array of universities publications
+  set pubUniversities array:from-list n-values universities [0]
+  ;; create array of universities probabilities
+  set probUniversities array:from-list n-values universities [initial-probability-agents]
+  ;; create array of universities probabilities
+  set probIncreaseUniversities array:from-list n-values universities [0]
+  array:set probIncreaseUniversities 0 probabilityIncrease1
+  array:set probIncreaseUniversities 1 probabilityIncrease2
+  array:set probIncreaseUniversities 2 probabilityIncrease3
+  array:set probIncreaseUniversities 3 probabilityIncrease4
+  array:set probIncreaseUniversities 4 probabilityIncrease5
+  array:set probIncreaseUniversities 5 probabilityIncrease6
+  array:set probIncreaseUniversities 6 probabilityIncrease7
+  array:set probIncreaseUniversities 7 probabilityIncrease8
 end
-
 
 to go
   if ticks > 250[ file-close export stop ] ;;
-  publish
+  ask turtles [
+    publish
+  ]
   tick;; Increase the tick counter by 1 each time throughend
 end
 
-
-
 to publish
-ask turtles [
-      if random-float 1 < (array:item probUniversities university)[
-        array:set pubUniversities university ((array:item pubUniversities university) + 1)
-        set pub pub + 1
-        if ((array:item probUniversities university) + (array:item probIncreaseUniversities university)) < 100 [
-          array:set probUniversities university ((array:item probUniversities university) + (array:item probIncreaseUniversities university))
-        ]
+  if random-float 1 < (array:item probUniversities university)[
+    array:set pubUniversities university ((array:item pubUniversities university) + 1)
+    set pub pub + 1
+    if ((array:item probUniversities university) + (array:item probIncreaseUniversities university)) < 100 [
+      array:set probUniversities university ((array:item probUniversities university) + (array:item probIncreaseUniversities university))
+      ]
   ]
-]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -455,36 +447,6 @@ probabilityIncrease8
 0
 1000
 0.1
-1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-55
-242
-219
-275
-max-xcor-grid
-max-xcor-grid
-0
-1000
-436
-1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-252
-244
-424
-277
-max-ycor-grid
-max-ycor-grid
-0
-1000
-1000
 1
 1
 NIL
@@ -1169,10 +1131,10 @@ NetLogo 5.2.1
       <value value="0.001"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="probabilityIncrease6">
-      <value value="0"/>
+      <value value="1.0E-4"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="probabilityIncrease7">
-      <value value="0"/>
+      <value value="1.0E-5"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="probabilityIncrease8">
       <value value="0"/>
@@ -1185,45 +1147,57 @@ NetLogo 5.2.1
       <value value="0.001"/>
       <value value="1.0E-4"/>
     </enumeratedValueSet>
-    <enumeratedValueSet variable="max-xcor-grid">
-      <value value="1000"/>
-      <value value="100"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="max-ycor-grid">
-      <value value="1000"/>
-      <value value="100"/>
-    </enumeratedValueSet>
     <enumeratedValueSet variable="numberTest">
-      <value value="&quot;test0&quot;"/>
-      <value value="&quot;test1&quot;"/>
-      <value value="&quot;test2&quot;"/>
-      <value value="&quot;test3&quot;"/>
-      <value value="&quot;test4&quot;"/>
-      <value value="&quot;test5&quot;"/>
-      <value value="&quot;test6&quot;"/>
-      <value value="&quot;test7&quot;"/>
-      <value value="&quot;test8&quot;"/>
-      <value value="&quot;test9&quot;"/>
-      <value value="&quot;test10&quot;"/>
-      <value value="&quot;test11&quot;"/>
-      <value value="&quot;test12&quot;"/>
-      <value value="&quot;test13&quot;"/>
-      <value value="&quot;test14&quot;"/>
-      <value value="&quot;test15&quot;"/>
-      <value value="&quot;test16&quot;"/>
-      <value value="&quot;test17&quot;"/>
-      <value value="&quot;test18&quot;"/>
-      <value value="&quot;test19&quot;"/>
-      <value value="&quot;test20&quot;"/>
-      <value value="&quot;test21&quot;"/>
-      <value value="&quot;test22&quot;"/>
-      <value value="&quot;test23&quot;"/>
-      <value value="&quot;test24&quot;"/>
-      <value value="&quot;test25&quot;"/>
-      <value value="&quot;test26&quot;"/>
-      <value value="&quot;test27&quot;"/>
-      <value value="&quot;test28&quot;"/>
-      <value value="&quot;test29&quot;"/>
+      <value value="&quot;test50&quot;"/>
+      <value value="&quot;test51&quot;"/>
+      <value value="&quot;test52&quot;"/>
+      <value value="&quot;test53&quot;"/>
+      <value value="&quot;test54&quot;"/>
+      <value value="&quot;test55&quot;"/>
+      <value value="&quot;test56&quot;"/>
+      <value value="&quot;test57&quot;"/>
+      <value value="&quot;test58&quot;"/>
+      <value value="&quot;test59&quot;"/>
+      <value value="&quot;test60&quot;"/>
+      <value value="&quot;test61&quot;"/>
+      <value value="&quot;test62&quot;"/>
+      <value value="&quot;test63&quot;"/>
+      <value value="&quot;test64&quot;"/>
+      <value value="&quot;test65&quot;"/>
+      <value value="&quot;test66&quot;"/>
+      <value value="&quot;test67&quot;"/>
+      <value value="&quot;test68&quot;"/>
+      <value value="&quot;test69&quot;"/>
+      <value value="&quot;test70&quot;"/>
+      <value value="&quot;test71&quot;"/>
+      <value value="&quot;test72&quot;"/>
+      <value value="&quot;test73&quot;"/>
+      <value value="&quot;test74&quot;"/>
+      <value value="&quot;test75&quot;"/>
+      <value value="&quot;test76&quot;"/>
+      <value value="&quot;test77&quot;"/>
+      <value value="&quot;test78&quot;"/>
+      <value value="&quot;test79&quot;"/>
+      <value value="&quot;test80&quot;"/>
+      <value value="&quot;test81&quot;"/>
+      <value value="&quot;test82&quot;"/>
+      <value value="&quot;test83&quot;"/>
+      <value value="&quot;test84&quot;"/>
+      <value value="&quot;test85&quot;"/>
+      <value value="&quot;test86&quot;"/>
+      <value value="&quot;test87&quot;"/>
+      <value value="&quot;test88&quot;"/>
+      <value value="&quot;test89&quot;"/>
+      <value value="&quot;test90&quot;"/>
+      <value value="&quot;test91&quot;"/>
+      <value value="&quot;test92&quot;"/>
+      <value value="&quot;test93&quot;"/>
+      <value value="&quot;test94&quot;"/>
+      <value value="&quot;test95&quot;"/>
+      <value value="&quot;test96&quot;"/>
+      <value value="&quot;test97&quot;"/>
+      <value value="&quot;test98&quot;"/>
+      <value value="&quot;test99&quot;"/>
     </enumeratedValueSet>
   </experiment>
 </experiments>

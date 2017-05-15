@@ -1,7 +1,10 @@
 import os
+from os import listdir
+from os.path import isfile, join
 import errno
 import pandas as pd
 import sys
+
 
 
 def menu():
@@ -15,18 +18,48 @@ def menu():
 		directorio = "ConCompetencia"
 
 	print "1. Separar un resultado en tablas"
-	print "2. Generar el promedio de las tablas de resultado"
-	print "3. Unir tablas"
-	print "4. Generar el promedio de productividad de los agentes"
+	print "2. Separar todas las tablas"
+	print "3. Generar el promedio de las tablas de resultado"
+	print "4. Unir tablas"
+	print "5. Generar el promedio de productividad de los agentes"
+	print "6. Limpiar pruebas"
 	argumento = input()
-	switcher = {1: separarResultado(directorio),2: obtenerPromedioResultado(directorio), 3: unirResultados(directorio), 4: generarPromedioProductividad(directorio)}
-	func = switcher.get(argumento, lambda: "nothing")
-	return func()
+	if argumento == 1:
+		return separarResultado(directorio)
+	elif argumento == 2 :
+		return separarTablas(directorio)
+	elif argumento == 3:
+		return generarPromedioResultado(directorio)
+	elif argumento == 4:
+		return unirResultados(directorio)
+	elif argumento == 5:
+		return generarPromedioProductividad(directorio)
+	elif argumento == 6:
+		return limpiarPruebas(directorio)
+	else:
+		sys.exit()
+
+def limpiarTestTables(directorio, numeroPruebas):
+	for i in range(0, numeroPruebas):
+		borrarArchivos("/home/fabianact/ActualTesis/Tesis/"+directorio+"/test"+str(i)+"/testTables/")
+
+def limpiarPruebas(directorio):
+	print "Cuantas pruebas?"
+	numeroPruebas = int(raw_input())
+	for i in range(0, numeroPruebas):
+		borrarArchivos(directorio+"/test"+str(i)+"/")
+
+
+
+def borrarArchivos(directorio):
+	files_dump = [join(directorio, c) for c in listdir(directorio)]
+	files_dump = filter(lambda c: isfile(c), files_dump)
+	[os.remove(c) for c in files_dump]
 
 #Separa un resultado de la simulacion, en las tablas correspondientes 
 def separarResultado(directorio):
 	numeroPruebas= 1
-	print "What is the name?"
+	print "Cual es el nombre del archivo?"
 	archivo = raw_input()
 	if directorio == "SinCompetencia":
 		crearTablasSinCompetencia(directorio, numeroPruebas, archivo)
@@ -43,15 +76,23 @@ def crearTablasSinCompetencia(directorio,numeroPruebas, archivo):
 			if exception.errno != errno.EEXIST:
 				raise
 		pub1 = open(directorio+'/test'+str(i)+'/testTables/'+'pub1-'+archivo, 'w')
-		ener = open(directorio+'/test'+str(i)+'/testTables/'+'energy-'+archivo, 'w')
-		aEner = open(directorio+'/test'+str(i)+'/testTables/'+'agentsEnergy-'+archivo, 'w')
-		prob1 = open(directorio+'/test'+str(i)+'/testTables/'+'prob1-'+archivo, 'w')
-		acumulatedPapers = open(directorio+'/test'+str(i)+'/testTables/'+'acumulated-papers-'+archivo, 'w')
-		actualPapers = open(directorio+'/test'+str(i)+'/testTables/'+'actual-papers-'+archivo, 'w')
 		pub2 = open(directorio+'/test'+str(i)+'/testTables/'+'pub2-'+archivo, 'w')
-		prob2 = open(directorio+'/test'+str(i)+'/testTables/'+'prob2-'+archivo, 'w')
 		pub3 = open(directorio+'/test'+str(i)+'/testTables/'+'pub3-'+archivo, 'w')
+		pub4 = open(directorio+'/test'+str(i)+'/testTables/'+'pub4-'+archivo, 'w')
+		pub5 = open(directorio+'/test'+str(i)+'/testTables/'+'pub5-'+archivo, 'w')
+		pub6 = open(directorio+'/test'+str(i)+'/testTables/'+'pub6-'+archivo, 'w')
+		pub7 = open(directorio+'/test'+str(i)+'/testTables/'+'pub7-'+archivo, 'w')
+		pub8 = open(directorio+'/test'+str(i)+'/testTables/'+'pub8-'+archivo, 'w')
+
+		prob1 = open(directorio+'/test'+str(i)+'/testTables/'+'prob1-'+archivo, 'w')
+		prob2 = open(directorio+'/test'+str(i)+'/testTables/'+'prob2-'+archivo, 'w')
 		prob3 = open(directorio+'/test'+str(i)+'/testTables/'+'prob3-'+archivo, 'w')
+		prob4 = open(directorio+'/test'+str(i)+'/testTables/'+'prob4-'+archivo, 'w')
+		prob5 = open(directorio+'/test'+str(i)+'/testTables/'+'prob5-'+archivo, 'w')
+		prob6 = open(directorio+'/test'+str(i)+'/testTables/'+'prob6-'+archivo, 'w')
+		prob7 = open(directorio+'/test'+str(i)+'/testTables/'+'prob7-'+archivo, 'w')
+		prob8 = open(directorio+'/test'+str(i)+'/testTables/'+'prob8-'+archivo, 'w')
+
 		entrada = open(directorio+'/test'+str(i)+'/'+archivo,'r')
 		linea=""
 		tag=""
@@ -73,50 +114,82 @@ def crearTablasSinCompetencia(directorio,numeroPruebas, archivo):
 				if number==1:
 					lineaNueva=linea.replace(',"0","true"','')
 					lineaNueva=lineaNueva.replace('"','')
-					ener.write(lineaNueva)
+					pub2.write(lineaNueva)
 				if number==2:
 					lineaNueva=linea.replace(',"0","true"','')
 					lineaNueva=lineaNueva.replace('"','')
-					aEner.write(lineaNueva)
+					pub3.write(lineaNueva)
 				if number==3:
 					lineaNueva=linea.replace(',"0","true"','')
 					lineaNueva=lineaNueva.replace('"','')
-					prob1.write(lineaNueva)
+					pub4.write(lineaNueva)
 				if number==4:
 					lineaNueva=linea.replace(',"0","true"','')
 					lineaNueva=lineaNueva.replace('"','')
-					acumulatedPapers.write(lineaNueva)
+					pub5.write(lineaNueva)
 				if number==5:
 					lineaNueva=linea.replace(',"0","true"','')
 					lineaNueva=lineaNueva.replace('"','')
-					actualPapers.write(lineaNueva)
+					pub6.write(lineaNueva)
 				if number==6:
 					lineaNueva=linea.replace(',"0","true"','')
 					lineaNueva=lineaNueva.replace('"','')
-					pub2.write(lineaNueva)
+					pub7.write(lineaNueva)
 				if number==7:
 					lineaNueva=linea.replace(',"0","true"','')
 					lineaNueva=lineaNueva.replace('"','')
-					prob2.write(lineaNueva)
+					pub8.write(lineaNueva)
 				if number==8:
 					lineaNueva=linea.replace(',"0","true"','')
 					lineaNueva=lineaNueva.replace('"','')
-					pub3.write(lineaNueva)
+					prob1.write(lineaNueva)
 				if number==9:
 					lineaNueva=linea.replace(',"0","true"','')
 					lineaNueva=lineaNueva.replace('"','')
+					prob2.write(lineaNueva)
+				if number==10:
+					lineaNueva=linea.replace(',"0","true"','')
+					lineaNueva=lineaNueva.replace('"','')
 					prob3.write(lineaNueva)
+				if number==11:
+					lineaNueva=linea.replace(',"0","true"','')
+					lineaNueva=lineaNueva.replace('"','')
+					prob4.write(lineaNueva)
+				if number==12:
+					lineaNueva=linea.replace(',"0","true"','')
+					lineaNueva=lineaNueva.replace('"','')
+					prob5.write(lineaNueva)
+				if number==13:
+					lineaNueva=linea.replace(',"0","true"','')
+					lineaNueva=lineaNueva.replace('"','')
+					prob6.write(lineaNueva)
+				if number==14:
+					lineaNueva=linea.replace(',"0","true"','')
+					lineaNueva=lineaNueva.replace('"','')
+					prob7.write(lineaNueva)
+				if number==15:
+					lineaNueva=linea.replace(',"0","true"','')
+					lineaNueva=lineaNueva.replace('"','')
+					prob8.write(lineaNueva)
+
 		entrada.close()
 		pub1.close()
-		ener.close()
-		aEner.close()
-		prob1.close()
-		acumulatedPapers.close()
-		actualPapers.close()
 		pub2.close()
-		prob2.close()
 		pub3.close()
+		pub1.close()
+		pub2.close()
+		pub3.close()
+		pub1.close()
+		pub2.close()
+
+		prob1.close()
+		prob2.close()
 		prob3.close()
+		prob4.close()
+		prob5.close()
+		prob6.close()
+		prob7.close()
+		prob8.close()
 
 #Genera las tablas a partir del resultado de una simulacion para el modelo con competencia
 def crearTablasConCompetencia(directorio, numeroPruebas, archivo):
@@ -242,57 +315,54 @@ def crearTablasConCompetencia(directorio, numeroPruebas, archivo):
 #Genera el promedio de los resultados de los distintos tests
 def generarPromedioResultado(directorio):
 	print "Cuantas pruebas?"
-	numberTest = raw_input()
-	numberAgentsUniversity1 = ["10000", "1000"]
-	numberAgentsUniversity2 = ["10000", "1000"]
-	numberAgentsUniversity3 = ["10000", "1000"]
-	probabilityIncrease1 = ["0.01", "1.0E-4"]
-	probabilityIncrease2 = ["0.01", "1.0E-4", "1.0E-6"]
-	probabilityIncrease3 = ["0.01", "1.0E-4", "1.0E-6"]
-	initialProbabilityAgents = ["0.01", "1.0E-4", "1.0E-6"]
-	initialEnergy = ["100"]
+	numeroPruebas = int(raw_input())
+	tiposTabla = ["pub1", "pub2", "pub3", "pub4", "pub5", "pub6", "pub7", "pub8", "prob1", "prob2", "prob3", "prob4", "prob5", "prob6", "prob7", "prob8"]
+	initialProbabilityAgents = ["0.01", "0.001", "1.0E-4"]
 	archivo=""
-	for i in numberAgentsUniversity1:
-		for j in numberAgentsUniversity2:
-			for l in numberAgentsUniversity3:
-					for m in probabilityIncrease1:
-						for a in probabilityIncrease2:
-							for b in probabilityIncrease3:
-								for c in initialProbabilityAgents:
-									for d in initialEnergy:
-										file=i+"-"+j+"-"+l+"-"+m+"-"+a+"-"+b+"-"+c+"-"+d+"-curve.csv"
-										obtenerPromedio(directorio, numeroPruebas, archivo)
+	for a in tiposTabla:
+		for c in initialProbabilityAgents:
+			archivo= c+"-curve.csv"
+			if directorio == "SinCompetencia":
+				obtenerPromedio(a, directorio, numeroPruebas, archivo)
+			else:
+				obtenerPromedio(a, directorio, numeroPruebas, archivo)
 
 
 #Genera el promedio para cada tabla generada
-def obtenerPromedio(directorio, numeroPruebas, archivo):
+def obtenerPromedio(tipoTabla, directorio, numeroPruebas, archivo):
 	sumaDatos=[]
 	numeroDatos=[]
+	archivo = tipoTabla+"-"+archivo
 	try:
-		os.makedirs(directory+'/averageResults')
+		os.makedirs(directorio+'/averageResults')
 	except OSError as exception:
 		if exception.errno != errno.EEXIST:
 			raise
-	for i in range(0,100):
+	for i in range(0,251):
 		sumaDatos.append(0)
 		numeroDatos.append(0)
 	
 	for i in range(0,numeroPruebas):
-		pub = open(directorio+'/test'+str(i)+'/'+archivo, 'r')    	    	    
+		info = open(directorio+'/test'+str(i)+'/'+"testTables/"+archivo, 'r')    	    	    
 		numeroLinea=0
-		for linea in pub:
+		for linea in info:
 			linea = linea.replace("\n", '')
-			sumaDatos[numeroLinea]=sumaDatos[numeroLinea]+int(linea.split(',')[1])
+			if tipoTabla == "pub1" or tipoTabla == "pub2" or tipoTabla == "pub3" or tipoTabla == "pub4" or tipoTabla == "pub5" or tipoTabla == "pub6" or tipoTabla == "pub7" or tipoTabla == "pub8":
+				sumaDatos[numeroLinea]=sumaDatos[numeroLinea]+int(linea.split(',')[1])
+			else:
+				sumaDatos[numeroLinea]=sumaDatos[numeroLinea]+float(linea.split(',')[1])
 			numeroDatos[numeroLinea]=numeroDatos[numeroLinea]+1
 			numeroLinea=numeroLinea+1
-		pub.close()
+		info.close()
 
-	pub = open(directorio+'/averageResults/'+archivo, 'w') 
+	info = open(directorio+'/averageResults/'+archivo, 'w') 
 
-	for i in range(0,100):
+	for i in range(0,251):
 		if numeroDatos[i]!=0:
-			pub.write(str(i)+','+str(sumaDatos[i]/numeroDatos[i])+'\n')
-	pub.close()
+			info.write(str(i)+','+str(sumaDatos[i]/numeroDatos[i])+'\n')
+	info.close()
+
+
 
 #une tablas de resultados
 def unirResultados():
@@ -329,125 +399,72 @@ def unirTabla(directory, table1,table2, input):
 	tab2.close()
 
 #Genera el promedio de productividad de los agentes
-def generarPromedioProductividad():
-	print "What is the directory?"
-	directory = raw_input()
-	print "How many test?"
-	numberTest = int(raw_input())
-	movement= ["1","100"]
-	initialEnergy=["5","10","15"]
-	probability1=["0.01", "0.1", "1"]
-	probability2=["0.01", "0.1", "1"]
+def generarPromedioProductividad(directorio):
+	print "Cuantas pruebas?"
+	numeroPruebas = int(raw_input())
+	initialProbabilityAgents = ["0.01", "0.001", "1.0E-4"]
+	archivo=""
 	file=""
-	for i in initialEnergy:
-		for j in movement:
-			for l in probability1:
-				for m in probability2:
-					file=i+"-"+j+"-"+l+"-"+m+"-turtles.csv"
-					ordenar(directory,numberTest,file)
-	for i in initialEnergy:
-		for j in movement:
-			for l in probability1:
-				for m in probability2:
-					file=i+"-"+j+"-"+l+"-"+m+"-turtles.csv"
-					generarPromedioProductividadTabla(directory,numberTest,file)
+	for c in initialProbabilityAgents:
+		archivo= c+"-turtles.csv"
+		ordenarTabla(directorio, numeroPruebas, archivo)
+	for c in initialProbabilityAgents:
+		archivo= c+"-turtles.csv"
+		generarPromedioProductividadTabla(directorio, numeroPruebas, archivo)
 
-#Ordena las tablas
-def ordenar():
-	print "What is the directory?"
-	directory = raw_input()
-	print "How many test?"
-	numberTest = int(raw_input())
-	movement= ["1","100"]
-	initialEnergy=["5","10","15"]
-	probability1=["0.01", "0.1", "1"]
-	probability2=["0.01", "0.1", "1"]
-	file=""
-	for i in initialEnergy:
-		for j in movement:
-			for l in probability1:
-				for m in probability2:
-					file=i+"-"+j+"-"+l+"-"+m+"-turtles.csv"
-					sorted(directory,numberTest,file)
 
 #Ordena una tabla
-def ordenarTabla(directory,numberTest, input):
-	for i in range(0,numberTest):
-		df = pd.read_csv(directory+'/test'+str(i)+'/'+input, delimiter=",",header=None)
-		df.columns = ['id', 'pub']
+def ordenarTabla(directorio, numeroPruebas, archivo):
+	for i in range(0, numeroPruebas):
+		df = pd.read_csv(directorio+'/test'+str(i)+'/'+archivo, delimiter=",",header=None)
+		df.columns = ['id', 'pub', 'uni']
 		df_sort=df.sort_values(by='pub', axis=0,ascending=False)
-		df_sort.to_csv(directory+'/test'+str(i)+'/testTables/'+'test'+input, sep=',', index=False, header=None)
-
-
+		df_sort.to_csv(directorio+'/test'+str(i)+'/testTables/'+'order-'+archivo, sep=',', index=False, header=None)
 
 #Genera el promedio de productividad para una tabla
-def generarPromedioProductividadTabla(directory, numberTest, input):
-	listOfNumbers=[]
-	numberInformation=[]
+def generarPromedioProductividadTabla(directorio, numeroPruebas, archivo):
+	sumaDatos = []
+	numeroDatos = []
+	universidades = []
 	try:
-		os.makedirs(directory+'/testTables')
+		os.makedirs(directorio+'/averageResults')
 	except OSError as exception:
 		if exception.errno != errno.EEXIST:
 			raise
-	for i in range(0,1000):
-		listOfNumbers.append(0)
-		numberInformation.append(0)
+	for i in range(0,4401):
+		sumaDatos.append(0)
+		numeroDatos.append(0)
+		universidades.append(0)
 	
-	for i in range(0,numberTest):
-		pub = open(directory+'/test'+str(i)+'/testTables/'+'test'+input, 'r')    	    	    
-		numberLine=0
-		for line in pub:
-			line = line.replace("\n", '')
-			listOfNumbers[numberLine]=listOfNumbers[numberLine]+int(line.split(',')[1])
-			numberInformation[numberLine]=numberInformation[numberLine]+1
-			numberLine=numberLine+1
-		pub.close()
+	for i in range(0,numeroPruebas):
+		info = open(directorio+'/test'+str(i)+'/'+"testTables/"+"order-"+archivo, 'r')    	    	    
+		numeroLinea=0
+		for linea in info:
+			linea = linea.replace("\n", '')
+			sumaDatos[numeroLinea] = sumaDatos[numeroLinea]+int(linea.split(',')[1])
+			numeroDatos[numeroLinea] = numeroDatos[numeroLinea]+1
+			universidades[numeroLinea] = linea.split(',')[2]
+			numeroLinea=numeroLinea+1
+		info.close()
 
-	for i in range(0, len(listOfNumbers)):
-		listOfNumbers[i]=(listOfNumbers[i]/numberInformation[i])
+	info = open(directorio+'/averageResults/'+archivo, 'w') 
 
-	values = []
-	repitition = []
-	j = 0
-	isIn = False
-	for number in listOfNumbers:
-		if number not in values and number != 0:
-			values.append(number)
-			repitition.append(listOfNumbers.count(number))
+	for i in range(0,4401):
+		if numeroDatos[i]!=0:
+			info.write(universidades[i]+','+str(sumaDatos[i]/numeroDatos[i])+'\n')
+	info.close()
 
-	pub = open(directory+'/testTables/'+input, 'w') 
-
-	for i in range(0, len(values)):
-		pub.write(str(values[i])+','+str(repitition[i])+'\n')
-	pub.close()
-
-def separarTablas():
-	print "What is the directory?"
-	directory = raw_input()
-	print "How many test?"
-	numberTest = int(raw_input())
-	numberAgentsUniversity1 = ["10000", "1000"]
-	numberAgentsUniversity2 = ["10000", "1000"]
-	numberAgentsUniversity3 = ["10000", "1000"]
-	initialProbability = ["0.1", "0.01"]
-	probabilityIncrease1 = ["0.01", "1.0E-4"]
-	probabilityIncrease2 = ["0.01", "1.0E-4", "1.0E-6"]
-	probabilityIncrease3 = ["0.01", "1.0E-4", "1.0E-6"]
-	initialProbabilityAgents = ["0.01", "1.0E-4", "1.0E-6"]
-	initialEnergy = ["100"]
-
-	file=""
-	for i in numberAgentsUniversity1:
-		for j in numberAgentsUniversity2:
-			for l in numberAgentsUniversity3:
-				for n in initialProbability:
-					for m in probabilityIncrease1:
-						for a in probabilityIncrease2:
-							for b in probabilityIncrease3:
-								for c in initialProbabilityAgents:
-									for d in initialEnergy:
-										file=i+"-"+j+"-"+l+"-"+n+"-"+m+"-"+a+"-"+b+"-"+c+"-"+d+"-curve.csv"
-										createTables(directory,numberTest,file)
+def separarTablas(directorio):
+	print "Cuantas pruebas?"
+	numeroPruebas = int(raw_input())
+	initialProbabilityAgents = ["0.01", "0.001", "1.0E-4"]
+	archivo=""
+	for c in initialProbabilityAgents:
+		archivo= c+"-curve.csv"
+		if directorio == "SinCompetencia":
+			crearTablasSinCompetencia(directorio, numeroPruebas, archivo)
+		else:
+			crearTablasConCompetencia(directorio, numeroPruebas, archivo)
 
 
 menu()
