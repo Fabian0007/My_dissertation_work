@@ -130,7 +130,7 @@ to energize
         set pub pub + 1
         set energy energy + 1
         set total-energy total-energy + 1
-        if ((array:item probUniversities university) + (array:item probIncreaseUniversities university)) < 100 [
+        if ((array:item probUniversities university) + (array:item probIncreaseUniversities university)) < 1 [
           array:set probUniversities university ((array:item probUniversities university) + (array:item probIncreaseUniversities university))
         ]
       ]
@@ -1287,6 +1287,56 @@ NetLogo 5.2.1
       <value value="true"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="numberTest">
+      <value value="&quot;test0&quot;"/>
+      <value value="&quot;test1&quot;"/>
+      <value value="&quot;test2&quot;"/>
+      <value value="&quot;test3&quot;"/>
+      <value value="&quot;test4&quot;"/>
+      <value value="&quot;test5&quot;"/>
+      <value value="&quot;test6&quot;"/>
+      <value value="&quot;test7&quot;"/>
+      <value value="&quot;test8&quot;"/>
+      <value value="&quot;test9&quot;"/>
+      <value value="&quot;test10&quot;"/>
+      <value value="&quot;test11&quot;"/>
+      <value value="&quot;test12&quot;"/>
+      <value value="&quot;test13&quot;"/>
+      <value value="&quot;test14&quot;"/>
+      <value value="&quot;test15&quot;"/>
+      <value value="&quot;test16&quot;"/>
+      <value value="&quot;test17&quot;"/>
+      <value value="&quot;test18&quot;"/>
+      <value value="&quot;test19&quot;"/>
+      <value value="&quot;test20&quot;"/>
+      <value value="&quot;test21&quot;"/>
+      <value value="&quot;test22&quot;"/>
+      <value value="&quot;test23&quot;"/>
+      <value value="&quot;test24&quot;"/>
+      <value value="&quot;test25&quot;"/>
+      <value value="&quot;test26&quot;"/>
+      <value value="&quot;test27&quot;"/>
+      <value value="&quot;test28&quot;"/>
+      <value value="&quot;test29&quot;"/>
+      <value value="&quot;test30&quot;"/>
+      <value value="&quot;test31&quot;"/>
+      <value value="&quot;test32&quot;"/>
+      <value value="&quot;test33&quot;"/>
+      <value value="&quot;test34&quot;"/>
+      <value value="&quot;test35&quot;"/>
+      <value value="&quot;test36&quot;"/>
+      <value value="&quot;test37&quot;"/>
+      <value value="&quot;test38&quot;"/>
+      <value value="&quot;test39&quot;"/>
+      <value value="&quot;test40&quot;"/>
+      <value value="&quot;test41&quot;"/>
+      <value value="&quot;test42&quot;"/>
+      <value value="&quot;test43&quot;"/>
+      <value value="&quot;test44&quot;"/>
+      <value value="&quot;test45&quot;"/>
+      <value value="&quot;test46&quot;"/>
+      <value value="&quot;test47&quot;"/>
+      <value value="&quot;test48&quot;"/>
+      <value value="&quot;test49&quot;"/>
       <value value="&quot;test50&quot;"/>
       <value value="&quot;test51&quot;"/>
       <value value="&quot;test52&quot;"/>
