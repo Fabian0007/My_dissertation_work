@@ -1,0 +1,791 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     32281,        782]
+NotebookOptionsPosition[     31969,        767]
+NotebookOutlinePosition[     32304,        782]
+CellTagsIndexPosition[     32261,        779]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "y", " ", "=", " ", 
+   "\"\</home/fabianact/ActualTesis/Tesis/ModelosPresentados/SinCompetencia\>\
+\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "x", " ", "=", " ", 
+   "\"\</home/fabianact/ActualTesis/Tesis/ModelosPresentados/ConCompetencia\>\
+\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"y", "<>", "\"\</images\>\""}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"ListLogPlot", ",", 
+    RowBox[{"BaseStyle", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"FontSize", "\[Rule]", "18"}], "}"}]}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub1", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-1-0.01-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub2", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-1-0.001-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub3", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "y", "<>", "\"\</averageResults/prob-pub-1-1.0E-4-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub4", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-5-0.01-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub5", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-5-0.001-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub6", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "y", "<>", "\"\</averageResults/prob-pub-5-1.0E-4-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub7", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", "\"\</averageResults/prob-pub-1-0.01-100-true-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub8", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-1-0.001-100-true-curve.csv\>\""}], "]"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub9", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-1-1.0E-4-100-true-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub10", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", "\"\</averageResults/prob-pub-5-0.01-100-true-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub11", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-5-0.001-100-true-curve.csv\>\""}], "]"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub12", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-5-1.0E-4-100-true-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"plotPub1", "=", " ", 
+   RowBox[{"Legended", "[", 
+    RowBox[{
+     RowBox[{"Show", "[", 
+      RowBox[{
+       RowBox[{"ListLogPlot", "[", 
+        RowBox[{
+         RowBox[{"{", " ", 
+          RowBox[{
+          "pub1", ",", " ", "pub2", ",", " ", "pub3", ",", " ", "pub4", ",", 
+           " ", "pub5", ",", " ", "pub6"}], " ", "}"}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "600"}], ",", " ", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"{", "Orange", "}"}], "}"}]}]}], "]"}], ",", 
+       RowBox[{"ListLogPlot", "[", 
+        RowBox[{
+         RowBox[{"{", " ", 
+          RowBox[{
+          "pub7", ",", " ", "pub8", ",", " ", "pub9", ",", " ", "pub10", ",", 
+           " ", "pub11", ",", " ", "pub12"}], "}"}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "600"}], ",", " ", 
+         RowBox[{"PlotRange", "\[Rule]", "All"}], ",", " ", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"{", "Blue", "}"}], "}"}]}]}], "]"}], ",", 
+       RowBox[{
+       "PlotLabel", "\[Rule]", " ", "\"\<Probabilidad de exito tipo 1\>\""}], 
+       ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Probabilidad\>\"", ",", "\"\<Publicaciones\>\""}], 
+         "}"}]}]}], "]"}], ",", 
+     RowBox[{"Placed", "[", 
+      RowBox[{
+       RowBox[{"SwatchLegend", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Orange", ",", "Blue"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Sin competencia\>\"", ",", "12"}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Con competencia\>\"", ",", "12"}], "]"}]}], "}"}], 
+         ",", 
+         RowBox[{"LegendMargins", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"15", ",", "15"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"5", ",", "5"}], "}"}]}], "}"}]}], ",", 
+         RowBox[{"LegendFunction", "\[Rule]", "Framed"}], ",", 
+         RowBox[{"LabelStyle", "\[Rule]", 
+          RowBox[{"(", 
+           RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}], ")"}]}]}], 
+        "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0.5", ",", "0.1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}]}], "}"}]}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<prob-pub-1.png\>\"", ",", "plotPub1"}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub1", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-2-0.01-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub2", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-2-0.001-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub3", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "y", "<>", "\"\</averageResults/prob-pub-2-1.0E-4-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub4", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-6-0.01-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub5", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-6-0.001-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub6", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "y", "<>", "\"\</averageResults/prob-pub-6-1.0E-4-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub7", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", "\"\</averageResults/prob-pub-2-0.01-100-true-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub8", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-2-0.001-100-true-curve.csv\>\""}], "]"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub9", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-2-1.0E-4-100-true-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub10", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", "\"\</averageResults/prob-pub-6-0.01-100-true-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub11", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-6-0.001-100-true-curve.csv\>\""}], "]"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub12", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-6-1.0E-4-100-true-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"plotPub2", "=", " ", 
+   RowBox[{"Legended", "[", 
+    RowBox[{
+     RowBox[{"Show", "[", 
+      RowBox[{
+       RowBox[{"ListLogPlot", "[", 
+        RowBox[{
+         RowBox[{"{", " ", 
+          RowBox[{
+          "pub1", ",", " ", "pub2", ",", " ", "pub3", ",", " ", "pub4", ",", 
+           " ", "pub5", ",", " ", "pub6"}], " ", "}"}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "600"}], ",", " ", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"{", "Orange", "}"}], "}"}]}]}], "]"}], ",", 
+       RowBox[{"ListLogPlot", "[", 
+        RowBox[{
+         RowBox[{"{", " ", 
+          RowBox[{
+          "pub7", ",", " ", "pub8", ",", " ", "pub9", ",", " ", "pub10", ",", 
+           " ", "pub11", ",", " ", "pub12"}], "}"}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "600"}], ",", " ", 
+         RowBox[{"PlotRange", "\[Rule]", "All"}], ",", " ", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"{", "Blue", "}"}], "}"}]}]}], "]"}], ",", 
+       RowBox[{
+       "PlotLabel", "\[Rule]", " ", "\"\<Probabilidad de exito tipo 2\>\""}], 
+       ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Probabilidad\>\"", ",", "\"\<Publicaciones\>\""}], 
+         "}"}]}]}], "]"}], ",", 
+     RowBox[{"Placed", "[", 
+      RowBox[{
+       RowBox[{"SwatchLegend", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Orange", ",", "Blue"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Sin competencia\>\"", ",", "12"}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Con competencia\>\"", ",", "12"}], "]"}]}], "}"}], 
+         ",", 
+         RowBox[{"LegendMargins", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"15", ",", "15"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"5", ",", "5"}], "}"}]}], "}"}]}], ",", 
+         RowBox[{"LegendFunction", "\[Rule]", "Framed"}], ",", 
+         RowBox[{"LabelStyle", "\[Rule]", 
+          RowBox[{"(", 
+           RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}], ")"}]}]}], 
+        "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0.5", ",", "0.1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}]}], "}"}]}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<prob-pub-2.png\>\"", ",", "plotPub2"}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub1", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-3-0.01-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub2", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-3-0.001-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub3", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "y", "<>", "\"\</averageResults/prob-pub-3-1.0E-4-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub4", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-3-0.01-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub5", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-3-0.001-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub6", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "y", "<>", "\"\</averageResults/prob-pub-3-1.0E-4-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub7", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", "\"\</averageResults/prob-pub-7-0.01-100-true-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub8", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-7-0.001-100-true-curve.csv\>\""}], "]"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub9", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-7-1.0E-4-100-true-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub10", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", "\"\</averageResults/prob-pub-7-0.01-100-true-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub11", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-7-0.001-100-true-curve.csv\>\""}], "]"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub12", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-7-1.0E-4-100-true-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"plotPub3", "=", " ", 
+   RowBox[{"Legended", "[", 
+    RowBox[{
+     RowBox[{"Show", "[", 
+      RowBox[{
+       RowBox[{"ListLogPlot", "[", 
+        RowBox[{
+         RowBox[{"{", " ", 
+          RowBox[{
+          "pub1", ",", " ", "pub2", ",", " ", "pub3", ",", " ", "pub4", ",", 
+           " ", "pub5", ",", " ", "pub6"}], " ", "}"}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "600"}], ",", " ", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"{", "Orange", "}"}], "}"}]}]}], "]"}], ",", 
+       RowBox[{"ListLogPlot", "[", 
+        RowBox[{
+         RowBox[{"{", " ", 
+          RowBox[{
+          "pub7", ",", " ", "pub8", ",", " ", "pub9", ",", " ", "pub10", ",", 
+           " ", "pub11", ",", " ", "pub12"}], "}"}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "600"}], ",", " ", 
+         RowBox[{"PlotRange", "\[Rule]", "All"}], ",", " ", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"{", "Blue", "}"}], "}"}]}]}], "]"}], ",", 
+       RowBox[{
+       "PlotLabel", "\[Rule]", " ", "\"\<Probabilidad de exito tipo 3\>\""}], 
+       ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Probabilidad\>\"", ",", "\"\<Publicaciones\>\""}], 
+         "}"}]}]}], "]"}], ",", 
+     RowBox[{"Placed", "[", 
+      RowBox[{
+       RowBox[{"SwatchLegend", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Orange", ",", "Blue"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Sin competencia\>\"", ",", "12"}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Con competencia\>\"", ",", "12"}], "]"}]}], "}"}], 
+         ",", 
+         RowBox[{"LegendMargins", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"15", ",", "15"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"5", ",", "5"}], "}"}]}], "}"}]}], ",", 
+         RowBox[{"LegendFunction", "\[Rule]", "Framed"}], ",", 
+         RowBox[{"LabelStyle", "\[Rule]", 
+          RowBox[{"(", 
+           RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}], ")"}]}]}], 
+        "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0.5", ",", "0.1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}]}], "}"}]}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<prob-pub-3.png\>\"", ",", "plotPub3"}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub1", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-4-0.01-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub2", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-4-0.001-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub3", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "y", "<>", "\"\</averageResults/prob-pub-4-1.0E-4-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub4", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-8-0.01-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub5", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{"y", "<>", "\"\</averageResults/prob-pub-8-0.001-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub6", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "y", "<>", "\"\</averageResults/prob-pub-8-1.0E-4-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub7", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", "\"\</averageResults/prob-pub-4-0.01-100-true-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub8", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-4-0.001-100-true-curve.csv\>\""}], "]"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub9", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-4-1.0E-4-100-true-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub10", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", "\"\</averageResults/prob-pub-8-0.01-100-true-curve.csv\>\""}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub11", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-8-0.001-100-true-curve.csv\>\""}], "]"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pub12", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "x", "<>", 
+     "\"\</averageResults/prob-pub-8-1.0E-4-100-true-curve.csv\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"plotPub4", "=", " ", 
+   RowBox[{"Legended", "[", 
+    RowBox[{
+     RowBox[{"Show", "[", 
+      RowBox[{
+       RowBox[{"ListPlot", "[", 
+        RowBox[{
+         RowBox[{"{", " ", 
+          RowBox[{
+          "pub1", ",", " ", "pub2", ",", " ", "pub3", ",", " ", "pub4", ",", 
+           " ", "pub5", ",", " ", "pub6"}], " ", "}"}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "600"}], ",", " ", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"{", "Orange", "}"}], "}"}]}]}], "]"}], ",", 
+       RowBox[{"ListPlot", "[", 
+        RowBox[{
+         RowBox[{"{", " ", 
+          RowBox[{
+          "pub7", ",", " ", "pub8", ",", " ", "pub9", ",", " ", "pub10", ",", 
+           " ", "pub11", ",", " ", "pub12"}], "}"}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", "600"}], ",", " ", 
+         RowBox[{"PlotRange", "\[Rule]", "All"}], ",", " ", 
+         RowBox[{"PlotStyle", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"{", "Blue", "}"}], "}"}]}]}], "]"}], ",", 
+       RowBox[{
+       "PlotLabel", "\[Rule]", " ", "\"\<Probabilidad de exito tipo 4\>\""}], 
+       ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<Probabilidad\>\"", ",", "\"\<Publicaciones\>\""}], 
+         "}"}]}]}], "]"}], ",", 
+     RowBox[{"Placed", "[", 
+      RowBox[{
+       RowBox[{"SwatchLegend", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Orange", ",", "Blue"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Sin competencia\>\"", ",", "12"}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<Con competencia\>\"", ",", "12"}], "]"}]}], "}"}], 
+         ",", 
+         RowBox[{"LegendMargins", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"15", ",", "15"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"5", ",", "5"}], "}"}]}], "}"}]}], ",", 
+         RowBox[{"LegendFunction", "\[Rule]", "Framed"}], ",", 
+         RowBox[{"LabelStyle", "\[Rule]", 
+          RowBox[{"(", 
+           RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}], ")"}]}]}], 
+        "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0.5", ",", "0.1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}]}], "}"}]}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<prob-pub-4.pdf\>\"", ",", "plotPub4"}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pubTotal", "=", 
+   RowBox[{"Grid", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"plotPub1", ",", "plotPub2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"plotPub3", ",", "plotPub4"}], "}"}]}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<prob-pub-total-100-true.png\>\"", ",", "pubTotal"}], "]"}], 
+   ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]",
+   "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.696369349099921*^9, 3.696369351500173*^9}, {
+   3.696369414571138*^9, 3.696369415123199*^9}, {3.69636944906069*^9, 
+   3.696369467916003*^9}, {3.696369518718348*^9, 3.6963695263331127`*^9}, {
+   3.696369882085663*^9, 3.696369886531363*^9}, 3.696369931453734*^9, {
+   3.696370193877516*^9, 3.696370212919281*^9}, {3.6963702436872873`*^9, 
+   3.696370251045643*^9}, {3.696370292238776*^9, 3.696370294646315*^9}, {
+   3.696370889198677*^9, 3.696370991366049*^9}, {3.696371031592379*^9, 
+   3.6963710898951883`*^9}, {3.696371131190606*^9, 3.696371157085678*^9}, {
+   3.696371196441421*^9, 3.696371200006021*^9}, {3.696371303679193*^9, 
+   3.696371351525859*^9}, 3.696468507830349*^9, {3.6964688767602673`*^9, 
+   3.696468898942329*^9}, {3.6964690325082273`*^9, 3.696469148836824*^9}, {
+   3.696469184576784*^9, 3.696469237053347*^9}, {3.696469383423892*^9, 
+   3.696469453434903*^9}, {3.696469519629141*^9, 3.696469624629455*^9}, {
+   3.6964699156996593`*^9, 3.6964699425822678`*^9}, {3.696474089796397*^9, 
+   3.69647409892106*^9}, {3.6964741431103373`*^9, 3.696474207966469*^9}, {
+   3.696474324893985*^9, 3.696474380695159*^9}, {3.696474417268544*^9, 
+   3.696474441626333*^9}, {3.6964747616615963`*^9, 3.696474763197339*^9}, {
+   3.696475082461876*^9, 3.6964751302802477`*^9}, {3.696513948564419*^9, 
+   3.696513948915492*^9}, {3.696514657574589*^9, 3.696514658172421*^9}, {
+   3.696515419342081*^9, 3.696515478350088*^9}, {3.696515618877634*^9, 
+   3.696515642536358*^9}, {3.6965157116493692`*^9, 3.6965157853355303`*^9}, {
+   3.696515832958329*^9, 3.696515834918542*^9}, {3.696515865176413*^9, 
+   3.696515865567194*^9}, {3.696592366086779*^9, 3.696592381900388*^9}, {
+   3.696592420607327*^9, 3.6965924344905033`*^9}, {3.696593496094574*^9, 
+   3.696593518819722*^9}, {3.6965935498857307`*^9, 3.696593589933436*^9}, {
+   3.6965936691666393`*^9, 3.696593827154496*^9}, {3.6965939027206507`*^9, 
+   3.696593912360482*^9}, {3.6965939748765907`*^9, 3.696593994000628*^9}, {
+   3.696594039648744*^9, 3.696594070944684*^9}, {3.696594227842802*^9, 
+   3.696594276839384*^9}, {3.6965943232571707`*^9, 3.696594323675864*^9}, {
+   3.696594365770067*^9, 3.696594378379258*^9}, {3.6965952480021067`*^9, 
+   3.696595248415928*^9}, {3.696595292857361*^9, 3.696595320327813*^9}, {
+   3.696595407503887*^9, 3.696595501831976*^9}, 3.698497023734667*^9, {
+   3.701346563031002*^9, 3.7013466819244947`*^9}, {3.701346733965008*^9, 
+   3.701346879266973*^9}, {3.701346914713142*^9, 3.7013470489155197`*^9}, {
+   3.7013471066545753`*^9, 3.701347126220941*^9}, {3.7013471625582733`*^9, 
+   3.701347190938467*^9}, {3.701347227017681*^9, 3.7013472381598663`*^9}, {
+   3.701347404386298*^9, 3.70134740980967*^9}, {3.701347605308134*^9, 
+   3.7013476115060863`*^9}, {3.701351544474656*^9, 3.7013515495003557`*^9}, {
+   3.701389286767445*^9, 3.701389334866281*^9}, {3.701389375593264*^9, 
+   3.701389378487914*^9}, {3.701389410865481*^9, 3.701389444519209*^9}, {
+   3.7013895522357187`*^9, 3.7013895527455378`*^9}, {3.7013896215228863`*^9, 
+   3.701389629817099*^9}, {3.7028976497853622`*^9, 3.702897732649433*^9}, {
+   3.7028977651413507`*^9, 3.702897819471199*^9}, {3.702897868104145*^9, 
+   3.702898133872904*^9}, {3.702898171552957*^9, 3.7028981741688747`*^9}, {
+   3.70289824981738*^9, 3.7028982550328712`*^9}, {3.7028983301694183`*^9, 
+   3.70289857541903*^9}, {3.7028986211873283`*^9, 3.702898623394804*^9}, {
+   3.702898775711686*^9, 3.702898854778943*^9}, {3.7028989063630247`*^9, 
+   3.702898950661158*^9}, {3.7028990366362877`*^9, 3.702899036781784*^9}, {
+   3.702899339729374*^9, 3.702899350308146*^9}, {3.702899581899766*^9, 
+   3.7028995851344748`*^9}, {3.702901816587775*^9, 3.702901915212534*^9}, {
+   3.7029019966148853`*^9, 3.70290200799055*^9}, {3.703551446272194*^9, 
+   3.703551448038019*^9}, {3.70355151253293*^9, 3.7035515130208387`*^9}, {
+   3.703551554011366*^9, 3.703551564893249*^9}, {3.7035516620207987`*^9, 
+   3.70355171756172*^9}, {3.703551842283175*^9, 3.7035518428654327`*^9}, {
+   3.703551882087617*^9, 3.703551892835732*^9}, {3.703551931987461*^9, 
+   3.703551933289708*^9}, {3.70355208079574*^9, 3.703552096923728*^9}, 
+   3.703552186908729*^9, {3.703552232140759*^9, 3.7035524873076267`*^9}, {
+   3.703552537035636*^9, 3.703552589688981*^9}, {3.703552639161933*^9, 
+   3.7035526786609783`*^9}, {3.703554965589733*^9, 3.703554981083305*^9}, {
+   3.703555121015069*^9, 3.703555121358303*^9}, {3.703555243182868*^9, 
+   3.703555244688834*^9}, {3.703555362687417*^9, 3.70355551004642*^9}, {
+   3.703815402188856*^9, 3.703815403460799*^9}, {3.703815616058832*^9, 
+   3.7038156164988623`*^9}, {3.703815648674541*^9, 3.703815791883939*^9}, {
+   3.7038852928597307`*^9, 3.70388533478013*^9}, {3.7038854028770638`*^9, 
+   3.7038854278003674`*^9}, {3.7038854598644047`*^9, 3.70388547499795*^9}, {
+   3.703885651552308*^9, 3.703885677150283*^9}, {3.703885832423881*^9, 
+   3.703885837378278*^9}, {3.7038859464879427`*^9, 3.7038860383836718`*^9}, {
+   3.703886139603528*^9, 3.703886291106992*^9}, {3.7038864375728073`*^9, 
+   3.703886536855548*^9}, 3.70388803732218*^9, {3.703888129745994*^9, 
+   3.703888157628014*^9}, 3.703888365026922*^9, {3.703888467497558*^9, 
+   3.703888471361435*^9}, {3.703888511032877*^9, 3.703888521119084*^9}, {
+   3.70388856716374*^9, 3.703888568831479*^9}, {3.7038886566639223`*^9, 
+   3.7038887332258463`*^9}, {3.703888785308281*^9, 3.703888785745966*^9}, {
+   3.703889426972466*^9, 3.703889454145978*^9}, {3.703889490476622*^9, 
+   3.70388949560903*^9}, {3.7038895384121857`*^9, 3.703889552722501*^9}, {
+   3.703891400940296*^9, 3.7038914098905277`*^9}, {3.703891471038933*^9, 
+   3.703891486627236*^9}, 3.703891667271174*^9, 3.7038918088277807`*^9, {
+   3.703893819738564*^9, 3.703893840065941*^9}, {3.7038938774857683`*^9, 
+   3.703893881850622*^9}, {3.70389392161773*^9, 3.703893924916616*^9}, {
+   3.703894028345539*^9, 3.703894046569077*^9}, {3.7038941349089813`*^9, 
+   3.703894168132256*^9}, 3.7038944609028378`*^9, {3.703894512176303*^9, 
+   3.703894546778501*^9}, {3.7038945847796173`*^9, 3.7038946138858547`*^9}, {
+   3.7038946456231823`*^9, 3.703894651701947*^9}, 3.703894834323069*^9, {
+   3.7038949050720253`*^9, 3.703894908710456*^9}, {3.70389494717351*^9, 
+   3.703894976423633*^9}, {3.703895007063237*^9, 3.703895059711255*^9}, {
+   3.70389509718538*^9, 3.703895097819366*^9}, {3.703895188944981*^9, 
+   3.703895241526114*^9}, {3.70389530832342*^9, 3.7038953131676273`*^9}, {
+   3.703895352588155*^9, 3.703895394255518*^9}, {3.703895450231452*^9, 
+   3.703895498735806*^9}, {3.703895587580224*^9, 3.7038955914158154`*^9}, {
+   3.703895759055676*^9, 3.703895781497699*^9}, {3.703895817501874*^9, 
+   3.7038958182642727`*^9}, {3.7038958915249453`*^9, 3.7038958932236137`*^9}, 
+   3.703895979012138*^9, {3.703896168583374*^9, 3.703896172887849*^9}, {
+   3.703896247889979*^9, 3.703896369909231*^9}, {3.703896432342608*^9, 
+   3.7038965118378077`*^9}, {3.703896604565712*^9, 3.7038966572792797`*^9}, {
+   3.703896697604961*^9, 3.703896714846808*^9}, {3.703896884862843*^9, 
+   3.703896885681353*^9}, {3.703897053624577*^9, 3.703897068488462*^9}, {
+   3.7038971142560883`*^9, 3.703897163432067*^9}, {3.703897328711475*^9, 
+   3.70389736383827*^9}, {3.703897528121151*^9, 3.703897631074142*^9}, {
+   3.703897729324853*^9, 3.703897731239406*^9}, {3.703901245350979*^9, 
+   3.70390128390895*^9}, {3.703901423790444*^9, 3.703901457162116*^9}, {
+   3.703901569713936*^9, 3.703901832847199*^9}, {3.703901875815781*^9, 
+   3.703901971378237*^9}, {3.703902236836878*^9, 3.703902343458974*^9}, {
+   3.703902778383407*^9, 3.703902779220627*^9}, {3.703902854235696*^9, 
+   3.7039028547092237`*^9}, {3.703902947091222*^9, 3.703902974922371*^9}, {
+   3.703903038004723*^9, 3.703903064663391*^9}, 3.703903095294715*^9, 
+   3.703903139604876*^9, {3.7039034451752357`*^9, 3.7039034484068737`*^9}, {
+   3.7039041162448177`*^9, 3.703904136087672*^9}, {3.703905206110424*^9, 
+   3.7039052110994587`*^9}, {3.703934006046606*^9, 3.7039340392984247`*^9}, {
+   3.7039341017204723`*^9, 3.70393411259296*^9}, {3.703934176758685*^9, 
+   3.703934236130702*^9}, {3.703934359204126*^9, 3.703934366979747*^9}, {
+   3.70393555430851*^9, 3.70393558387919*^9}, {3.7039932929790983`*^9, 
+   3.7039933044459*^9}, {3.703995475905167*^9, 3.703995491709297*^9}, {
+   3.70402383880984*^9, 3.7040239393460093`*^9}, {3.704023972114417*^9, 
+   3.704023972550403*^9}, {3.704024021450041*^9, 3.704024038023682*^9}, {
+   3.704024074634947*^9, 3.704024077818222*^9}, {3.704024137361548*^9, 
+   3.70402420004183*^9}, {3.704024274381085*^9, 3.704024332306168*^9}, {
+   3.7040243713075953`*^9, 3.704024451437397*^9}, {3.7040246354726677`*^9, 
+   3.7040246628830557`*^9}, {3.704024695686713*^9, 3.704024770272479*^9}, {
+   3.704024838897976*^9, 3.704024870077387*^9}, {3.7040249875808496`*^9, 
+   3.704025020413261*^9}, {3.7040250701889057`*^9, 3.70402507815232*^9}, {
+   3.704025640251904*^9, 3.704025647110931*^9}, {3.704026098386713*^9, 
+   3.704026099028275*^9}, {3.704059010967751*^9, 3.704059038036916*^9}, {
+   3.704060314740089*^9, 3.704060316124434*^9}, {3.704060389574255*^9, 
+   3.7040603950873823`*^9}, {3.704060440852457*^9, 3.704060444644362*^9}, {
+   3.704061639912306*^9, 3.704061656494568*^9}, {3.7040616924386263`*^9, 
+   3.704061692639152*^9}, {3.704061838085772*^9, 3.7040618386668158`*^9}, {
+   3.704061980738453*^9, 3.704061981222999*^9}, {3.704062028986526*^9, 
+   3.704062029992504*^9}, 3.704062093369648*^9, {3.704063028577187*^9, 
+   3.704063032561425*^9}, {3.70406336740281*^9, 3.704063377601384*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7040616806661367`*^9, 3.704061680755109*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.7035551733920803`*^9, 3.7035553923632193`*^9}]
+},
+WindowSize->{1364, 716},
+WindowMargins->{{-9, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 29, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 31213, 739, 2004, "Input"],
+Cell[31774, 761, 94, 1, 32, "Input"],
+Cell[31871, 764, 94, 1, 32, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
