@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     70373,       1718]
-NotebookOptionsPosition[     69981,       1700]
-NotebookOutlinePosition[     70316,       1715]
-CellTagsIndexPosition[     70273,       1712]
+NotebookDataLength[     70363,       1717]
+NotebookOptionsPosition[     69971,       1699]
+NotebookOutlinePosition[     70306,       1714]
+CellTagsIndexPosition[     70263,       1711]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -354,7 +354,7 @@ Cell[BoxData[{
    3.704935406865803*^9}, {3.70493547717729*^9, 3.704935516346167*^9}, {
    3.704935638629363*^9, 3.704935640706099*^9}, {3.704935744696308*^9, 
    3.704935788988155*^9}, {3.704935860556163*^9, 3.704935904018807*^9}, {
-   3.704935943085409*^9, 3.7049359445664873`*^9}}],
+   3.704935943085409*^9, 3.7049359445664873`*^9}, 3.705581774508247*^9}],
 
 Cell[BoxData[
  GraphicsBox[{{
@@ -572,26 +572,25 @@ Cell[BoxData[
            StyleBox["1", {}, StripOnInput -> False]],
           Annotation[#, 
            Style[1, {}], "Tooltip"]& ]}}}, {}, {}}, {}, {}}, {}, {}, 
-    StyleBox[
-     StyleBox[{
-       {Thickness[Tiny], 
-        LineBox[{{0.45503208065994505`, -1.}, {9.731852612282308, -1.}}], 
-        StyleBox[{}, "GraphicsLabel",
-         StripOnInput->False]}, 
-       StyleBox[{
-         {Thickness[Tiny], 
-          LineBox[{{0.6333638863428048, -1.}, 
-            Offset[{-1.102182119232618*^-15, -6.}, {
-             0.6333638863428048, -1.}]}], 
-          LineBox[{{9.549954170485792, -1.}, 
-            Offset[{-1.102182119232618*^-15, -6.}, {
-             9.549954170485792, -1.}]}], {{}, {}, {}, {}, {}, {}, {}, {}, {}, \
+    StyleBox[{
+      {Thickness[Tiny], 
+       LineBox[{{0.45503208065994505`, -1.}, {9.731852612282308, -1.}}], 
+       StyleBox[{}, "GraphicsLabel",
+        StripOnInput->False]}, 
+      StyleBox[{
+        {Thickness[Tiny], 
+         LineBox[{{0.6333638863428048, -1.}, 
+           Offset[{-1.102182119232618*^-15, -6.}, {
+            0.6333638863428048, -1.}]}], 
+         LineBox[{{9.549954170485792, -1.}, 
+           Offset[{-1.102182119232618*^-15, -6.}, {
+            9.549954170485792, -1.}]}], {{}, {}, {}, {}, {}, {}, {}, {}, {}, \
 {}, {}}}, 
-         StyleBox[{}, "GraphicsLabel",
-          StripOnInput->False]}, "GraphicsTicks",
-        StripOnInput->False]},
-      Antialiasing->False], "GraphicsAxes",
-     StripOnInput->False]}, {
+        StyleBox[{}, "GraphicsLabel",
+         StripOnInput->False]}, "GraphicsTicks",
+       StripOnInput->False]}, "GraphicsAxes",
+     StripOnInput->False,
+     Antialiasing->False]}, {
     {Opacity[0], PointBox[{0.45503208065994505`, -1.}]}, {{}, {{}, {{}, {
         {RGBColor[0, 0, 1], Opacity[0.7], EdgeForm[{Opacity[0.637], Thickness[
          Small]}], 
@@ -1715,11 +1714,11 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 17303, 334, 627, "Input"],
-Cell[17886, 358, 51910, 1333, 522, "Output"]
+Cell[580, 22, 17325, 334, 627, "Input"],
+Cell[17908, 358, 51878, 1332, 489, "Output"]
 }, Open  ]],
-Cell[69811, 1694, 71, 1, 32, "Input"],
-Cell[69885, 1697, 92, 1, 32, "Input"]
+Cell[69801, 1693, 71, 1, 32, "Input"],
+Cell[69875, 1696, 92, 1, 32, "Input"]
 }
 ]
 *)

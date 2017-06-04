@@ -23,6 +23,7 @@ def menu():
 	print "4. Unir tablas"
 	print "5. Generar el promedio de productividad de los agentes"
 	print "6. Limpiar pruebas"
+	print "7. Calcular desviacion estandar"
 	argumento = input()
 	if argumento == 1:
 		return separarResultado(directorio)
@@ -36,6 +37,8 @@ def menu():
 		return generarPromedioProductividad(directorio)
 	elif argumento == 6:
 		return limpiarPruebas(directorio)
+	elif argumento == 7:
+		return calcularDesviacionEstandar(directorio)
 	else:
 		sys.exit()
 
@@ -530,7 +533,100 @@ def separarTablas(directorio):
 				for a in sizeIncremented:
 					archivo= c+"-"+b+"-"+a+"-curve.csv"
 					crearTablasConCompetencia(directorio, numeroPruebas, archivo)
+
+
+def procesarDatosDeProductividad(directorio):
+	print "Cuantas pruebas?"
+	numeroPruebas = int(raw_input())
+	initialProbabilityAgents = ["0.01", "0.001", "1.0E-4"]
+	archivo=""
+	if directorio == "SinCompetencia":
+		for c in initialProbabilityAgents:
+			archivo= c+"-curve.csv"
+			crearTablasSinCompetencia(directorio, numeroPruebas, archivo)
+	else:
+		initialEnergy = ["100"]
+		sizeIncremented = ["true", "false"]
+		for c in initialProbabilityAgents:
+			for b in initialEnergy:
+				for a in sizeIncremented:
+					archivo= c+"-"+b+"-"+a+"-curve.csv"
+					crearTablasConCompetencia(directorio, numeroPruebas, archivo)
+
 			
+#Calcular desviacion estandar
+def calcularDesviacionEstandar(directorio):
+	print "Cuantas pruebas?"
+	numeroPruebas = int(raw_input())
+	tiposTabla = ["pub1", "pub2", "pub3", "pub4", "pub5", "pub6", "pub7", "pub8", "prob1", "prob2", "prob3", "prob4", "prob5", "prob6", "prob7", "prob8"]
+	initialProbabilityAgents = ["0.01", "0.001", "1.0E-4"]
+	archivo=""
+	if directorio == "SinCompetencia":
+		for a in tiposTabla:
+			for c in initialProbabilityAgents:
+				archivo= c+"-curve.csv"
+				calcularDesviacionEstandarIndividual(a, directorio, numeroPruebas, archivo)
+	else:
+		initialEnergy = ["100"]
+		sizeIncremented = ["true", "false"]
+		for a in tiposTabla:
+			for c in initialProbabilityAgents:
+				for b in initialEnergy:
+					for d in sizeIncremented:
+						archivo= c+"-"+b+"-"+d+"-curve.csv"
+						calcularDesviacionEstandarIndividual(a, directorio, numeroPruebas, archivo)
+
+
+#Calcula la desviacion estandar
+def calcularDesviacionEstandarIndividual(tipoTabla, directorio, numeroPruebas, archivo):
+	promedio=[]
+	desviacion=[]
+	numeroDatos=[]
+	archivo = tipoTabla+"-"+archivo
+	try:
+		os.makedirs(directorio+'/averageResults')
+	except OSError as exception:
+		if exception.errno != errno.EEXIST:
+			raise
+
+	for i in range(0,500):
+		desviacion.append(0)
+		numeroDatos.append(0)
+
+	info = open(directorio+'/averageResults/'+archivo, 'r')    	    	    
+	numeroLinea=0
+	for linea in info:
+		linea = linea.replace("\n", '')
+		if tipoTabla == "pub1" or tipoTabla == "pub2" or tipoTabla == "pub3" or tipoTabla == "pub4" or tipoTabla == "pub5" or tipoTabla == "pub6" or tipoTabla == "pub7" or tipoTabla == "pub8":
+			promedio.append(int(linea.split(',')[1]))
+		else:
+			promedio.append(float(linea.split(',')[1]))
+		
+	info.close()
+
+	for i in range(0,numeroPruebas):
+		info = open(directorio+'/test'+str(i)+'/'+"testTables/"+archivo, 'r')    	    	    
+		numeroLinea=0
+		for linea in info:
+			linea = linea.replace("\n", '')
+			if tipoTabla == "pub1" or tipoTabla == "pub2" or tipoTabla == "pub3" or tipoTabla == "pub4" or tipoTabla == "pub5" or tipoTabla == "pub6" or tipoTabla == "pub7" or tipoTabla == "pub8":
+				desviacion[numeroLinea]=desviacion[numeroLinea]+(float(linea.split(',')[1])- (float(promedio[numeroLinea])))**2
+			else:
+				desviacion[numeroLinea]=desviacion[numeroLinea]+(float(linea.split(',')[1])- (float(promedio[numeroLinea])))**2
+			numeroDatos[numeroLinea]=numeroDatos[numeroLinea]+1
+			numeroLinea=numeroLinea+1
+		info.close()
+
+	info = open(directorio+'/averageResults/desvest-pro-'+archivo, 'w') 
+
+	for i in range(500):
+		if numeroDatos[i]!=0:
+			if(promedio[i] != 0):
+				linea = str(i)+','+str((((desviacion[i]/numeroDatos[i])**0.5)*100)/promedio[i])+'\n'
+				info.write(linea)
+			else:
+				info.write(str(i)+','+str((((desviacion[i]/numeroDatos[i])**0.5)))+'\n')
+	info.close()
 
 
 menu()
